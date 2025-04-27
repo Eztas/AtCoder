@@ -1,12 +1,12 @@
 {
-	"name": "atcoder-python",
+	"name": "AtCoder",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "python",
-	"workspaceFolder": "/atcoder_python",
+	"workspaceFolder": "/AtCoder",
 
 	// Use this environment variable if you need to bind mount your local source code into a new container.
 	"remoteEnv": {
-		"../../atcoder_python": "/atcoder_python"
+		"../../AtCoder": "/AtCoder"
 	},
 	
 	// Set *default* container specific settings.json values on container create.
