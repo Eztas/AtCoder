@@ -48,7 +48,8 @@ Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイ�
 4. Dockerコンテナを起動 `docker-compose up -d`
 -dでバックグラウンドで起動させる
 
-5. 「Remote-Containers: Open Folder in Container...」を選択し、コンテナに接続する
+5. 「Dev Containers: Attach to Running Container...」を選択し、コンテナに接続する
+(Remote-Containers: Open Folder in Container... とかだとうまくいかなかった)
 
 ## もしも…
 
@@ -67,3 +68,5 @@ Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイ�
 [VSCode + DockerでAtCoderのテスト・提出ができる環境構築【Python,PyPy】](https://zenn.dev/gomatofu/articles/282adadcb5d769)
 
 [GitHubリポジトリ](https://github.com/gomatofu/atcoder_python/)
+
+[Dockerコンテナ接続, VSCode](https://qiita.com/75ks/items/b2961e8562c353f42d21)
