@@ -1,8 +1,8 @@
 services:
   python:
     build: ./
-    image: AtCoder
-    container_name: AtCoder
+    image: atcoder
+    container_name: atcoder
     tty: true
     volumes: 
       - ../../AtCoder:/AtCoder
