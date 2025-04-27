@@ -51,6 +51,10 @@ Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイ�
 5. 「Dev Containers: Attach to Running Container...」を選択し、コンテナに接続する
 (Remote-Containers: Open Folder in Container... とかだとうまくいかなかった)
 
+6. 新しいウィンドウが開かれ、それでAtCoderフォルダに移動
+
+7. `acc login`を実行してログイン(なおlogin failedになってそこで詰まっている)
+
 ## もしも…
 
 ### 1. requirementsに新たなライブラリを追加したい
