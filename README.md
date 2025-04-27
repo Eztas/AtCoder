@@ -40,13 +40,15 @@ Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイ�
 
 1. [参考文献](https://zenn.dev/gomatofu/articles/282adadcb5d769)を元に4つのファイル作成(Dockerfile, devcontainer.json, docker-compose.yml, requirements.txt)
 
-2. Dockerコンテナをビルド
+2. (docker-compose.ymlのあるフォルダへ移動するために、)`cd .devcontainer`でディレクリを移動
+
+3. Dockerコンテナをビルド
 `docker-compose build`
 
-3. Dockerコンテナを起動 `docker-compose up -d`
+4. Dockerコンテナを起動 `docker-compose up -d`
 -dでバックグラウンドで起動させる
 
-4. 「Remote-Containers: Open Folder in Container...」を選択し、コンテナに接続する
+5. 「Remote-Containers: Open Folder in Container...」を選択し、コンテナに接続する
 
 ## もしも…
 
