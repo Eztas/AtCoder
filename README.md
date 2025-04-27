@@ -40,6 +40,24 @@ Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイ�
 
 1. [参考文献](https://zenn.dev/gomatofu/articles/282adadcb5d769)を元に4つのファイル作成(Dockerfile, devcontainer.json, docker-compose.yml, requirements.txt)
 
+2. Dockerコンテナをビルド
+`docker-compose build`
+
+3. Dockerコンテナを起動 `docker-compose up -d`
+-dでバックグラウンドで起動させる
+
+## もしも…
+
+### 1. requirementsに新たなライブラリを追加したい
+
+再度、`docker-compose build`で`docker-compose up -d`すればいい
+
+### 2. AtCoderを一通り解き終わって終了したい
+
+`docker-compose down`で終了(止めておくことで、裏でのリソース消費を防ぐ)
+
+再開時は、`docker-compose up -d
+
 # 参考文献
 
 [VSCode + DockerでAtCoderのテスト・提出ができる環境構築【Python,PyPy】](https://zenn.dev/gomatofu/articles/282adadcb5d769)
