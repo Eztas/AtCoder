@@ -18,6 +18,12 @@ Python + Docker + VSCode + WSL
 
 `ARG` : Dockerイメージのビルド時に使用する変数を定義するための命令
 
+## devcontainer.json
+
+どのDockerイメージを使用するか、どの拡張機能をインストールするか、どのポートを公開するかなど、開発環境の設定を定義
+
+Dockerfileは主にイメージをビルドするための手順を記述するものであり、必要なツールやライブラリをインストールするための命令を含む。一方、devcontainer.jsonは、VSCodeがどのようにコンテナを起動し、どの設定を適用するかを定義
+
 # 参考文献
 
 [VSCode + DockerでAtCoderのテスト・提出ができる環境構築【Python,PyPy】](https://zenn.dev/gomatofu/articles/282adadcb5d769)
