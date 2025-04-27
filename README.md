@@ -24,6 +24,16 @@ Python + Docker + VSCode + WSL
 
 Dockerfileは主にイメージをビルドするための手順を記述するものであり、必要なツールやライブラリをインストールするための命令を含む。一方、devcontainer.jsonは、VSCodeがどのようにコンテナを起動し、どの設定を適用するかを定義
 
+## docker-compose.yml
+
+・docker-compose.ymlでは、アプリケーションを構成する各サービス（コンテナ）を定義します。これにより、どのイメージを使用するか、どのポートを公開するか、環境変数をどう設定するかなどを明示的に記述
+
+・YAML形式で設定を記述するため、視覚的に分かりやすく、複雑な環境でも設定を簡潔に管理
+
+・複数のコンテナを一つのコマンドで起動・停止できるため、開発やデプロイの効率が大幅に向上。例えば、docker-compose upコマンドを実行するだけで、定義された全てのサービスを同時に起動
+
+Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイメージを使用する設定を行い、docker-compose.ymlを使用して、複数のサービスを定義し、それらを同時に起動可能
+
 # 参考文献
 
 [VSCode + DockerでAtCoderのテスト・提出ができる環境構築【Python,PyPy】](https://zenn.dev/gomatofu/articles/282adadcb5d769)
