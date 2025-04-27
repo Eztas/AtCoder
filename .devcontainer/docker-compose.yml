@@ -2,8 +2,8 @@ version: "3"
 services:
   python:
     build: ./
-    image: atcoder
-    container_name: atcoder
+    image: AtCoder
+    container_name: AtCoder
     tty: true
     volumes: 
       - ../../AtCoder:/AtCoder
