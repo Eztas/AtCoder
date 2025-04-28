@@ -78,6 +78,7 @@ CLIでの実行に何か制限があるらしい
 1. ここにある手順を参考にしてREVEL_SESSIONクッキーを取得。
 2. ターミナルでacc config-dirを実行し、表示されたディレクトリ内に保存されているsesion.jsonを開く。
 3. REVEL_SESSION=xxxのxxxの部分に手順1で取得したREVEL_SESSIONクッキーを貼り付けて保存。
+4. `acc session`で確認, okなら問題ない
 
 [acc対処 1](https://kaiyou9.com/acc_and_oj_login_failed/)
 
