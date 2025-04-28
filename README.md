@@ -111,6 +111,10 @@ Set-Cookie3: REVEL_SESSION="xxx"
 
 3. 作業が終われば`docker compose stop`で終了(downだとボリュームのデータが消えるので注意)
 
+## 問題の追加
+
+`acc new {contest名}`で追加
+
 ## もしも…
 
 ### 1. requirementsに新たなライブラリを追加したい
