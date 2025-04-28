@@ -67,6 +67,24 @@ Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイ�
 
 再開時は、`docker-compose up -d
 
+### 3. accでログインできない
+
+CLIでの実行に何か制限があるらしい
+
+以下を参考に対応できるかも
+
+自分も同様の現象に遭遇しましたが、解決できたので手順を共有します。
+
+1. ここにある手順を参考にしてREVEL_SESSIONクッキーを取得。
+2. ターミナルでacc config-dirを実行し、表示されたディレクトリ内に保存されているsesion.jsonを開く。
+3. REVEL_SESSION=xxxのxxxの部分に手順1で取得したREVEL_SESSIONクッキーを貼り付けて保存。
+
+[acc対処 1](https://kaiyou9.com/acc_and_oj_login_failed/)
+
+[acc対処 2](https://github.com/key-moon/aclogin?tab=readme-ov-file#2-revel_session%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%82%92%E5%8F%96%E5%BE%97)
+
+[acc 困ってる事例](https://github.com/Tatamo/atcoder-cli/issues/66)
+
 # 参考文献
 
 [VSCode + DockerでAtCoderのテスト・提出ができる環境構築【Python,PyPy】](https://zenn.dev/gomatofu/articles/282adadcb5d769)
