@@ -23,4 +23,5 @@ RUN python -m pip install --upgrade pip \
 
 # コンテスト補助ツールをインストール
 RUN pip3 install online-judge-tools
+RUN pip install aclogin
 RUN npm install -g atcoder-cli
