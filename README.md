@@ -34,7 +34,7 @@ Dockerfileは主にイメージをビルドするための手順を記述する�
 
 Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイメージを使用する設定を行い、docker-compose.ymlを使用して、複数のサービスを定義し、それらを同時に起動可能
 
-## 設定手順
+## 設定手順(初期設定)
 
 ※ 事前のインストールは既に完了済み(VSCode, Docker, WSL)
 
@@ -53,7 +53,55 @@ Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイ�
 
 6. 新しいウィンドウが開かれ、それでAtCoderフォルダに移動
 
-7. `acc login`を実行してログイン(なおlogin failedになってそこで詰まっている)
+7. 開発者ツールを使用して, Application->Cookies->"https://atcoder.jp"
+からREVEL_SESSIONクッキーを取得。
+
+8. ターミナルでacc config-dirを実行し、表示されたディレクトリ内に保存されているsesion.jsonを開く(もしくは新規作成する)。
+
+9. REVEL_SESSION=xxxのxxxの部分に手順1で取得したREVEL_SESSIONクッキーを貼り付けて保存。
+```
+{
+    "cookies": [
+        "REVEL_SESSION=xxx"
+    ]
+}
+```
+
+10. `acc session`で確認, okなら問題ない
+
+11. `oj -h` でcookie.jarファイルのパスを確認し、そのファイルのREVEL_SESSIONも先ほどと同じものを代入
+```
+Set-Cookie3: REVEL_SESSION="xxx"
+```
+
+12. `acc check-oj`や`oj oj login https://beta.atcoder.jp/`でログインを確認
+
+13. /AtCoderディレクトリで、`acc config default-task-choice all`
+
+    これにより、全問題を1回の動作で取得
+
+14. テンプレートを設定するための準備
+
+    ```
+    cd `acc config-dir`
+    mkdir python
+    cd python
+    touch template.json
+    touch main.py
+    code template.json
+    ```
+
+15. template.jsonの設定
+    ```
+    {
+        "task":{
+            "program": ["main.py"],
+            "submit": "main.py"
+        }
+    }
+    ```
+
+16. `acc config default-template python`でデフォルトのテンプレートをpythonに変更
 
 ## もしも…
 
@@ -67,7 +115,7 @@ Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイ�
 
 再開時は、`docker-compose up -d
 
-### 3. accでログインできない
+### 3. acc loginでログインできない
 
 CLIでの実行に何か制限があるらしい
 
