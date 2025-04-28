@@ -115,6 +115,16 @@ Set-Cookie3: REVEL_SESSION="xxx"
 
 `acc new {contest名}`で追加
 
+## テスト
+
+'oj t -c "pypy3 main.py" -d ./tests/'
+か
+'oj t -c "python3 main.py" -d ./tests/'
+
+## 提出(2025/04/28現在、AtCoderの使用により提出はできない可能性)
+
+`acc s main.py -- --guess-python-interpreter pypy`
+
 ## もしも…
 
 ### 1. requirementsに新たなライブラリを追加したい
