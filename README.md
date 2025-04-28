@@ -103,6 +103,14 @@ Set-Cookie3: REVEL_SESSION="xxx"
 
 16. `acc config default-template python`でデフォルトのテンプレートをpythonに変更
 
+## 日頃の手順
+
+1. `docker compose start`で開始
+
+2. 「Dev Containers: Attach to Running Container...」を選択し、コンテナへ移動
+
+3. 作業が終われば`docker compose stop`で終了(downだとボリュームのデータが消えるので注意)
+
 ## もしも…
 
 ### 1. requirementsに新たなライブラリを追加したい
