@@ -156,6 +156,12 @@ CLIでの実行に何か制限があるらしい
 
 [acc 困ってる事例](https://github.com/Tatamo/atcoder-cli/issues/66)
 
+## 4. 自動提出ができない
+
+[自動ログインして自動提出に成功した例](https://qiita.com/namonaki/items/16cda635dd7c34496aaa)
+
+[acloginの対応](https://github.com/key-moon/aclogin/blob/main/README.md)
+
 # 参考文献
 
 [VSCode + DockerでAtCoderのテスト・提出ができる環境構築【Python,PyPy】](https://zenn.dev/gomatofu/articles/282adadcb5d769)
