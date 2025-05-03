@@ -115,6 +115,16 @@ Set-Cookie3: REVEL_SESSION="xxx"
 
 `acc new {contest名}`で追加
 
+## テスト
+
+'oj t -c "pypy3 main.py" -d ./tests/'
+か
+'oj t -c "python3 main.py" -d ./tests/'
+
+## 提出(2025/04/28現在、AtCoderの使用により提出はできない可能性)
+
+`acc s main.py -- --guess-python-interpreter pypy`
+
 ## もしも…
 
 ### 1. requirementsに新たなライブラリを追加したい
@@ -145,6 +155,12 @@ CLIでの実行に何か制限があるらしい
 [acc対処 2](https://github.com/key-moon/aclogin?tab=readme-ov-file#2-revel_session%E3%82%AF%E3%83%83%E3%82%AD%E3%83%BC%E3%82%92%E5%8F%96%E5%BE%97)
 
 [acc 困ってる事例](https://github.com/Tatamo/atcoder-cli/issues/66)
+
+## 4. 自動提出ができない
+
+[自動ログインして自動提出に成功した例](https://qiita.com/namonaki/items/16cda635dd7c34496aaa)
+
+[acloginの対応](https://github.com/key-moon/aclogin/blob/main/README.md)
 
 # 参考文献
 
