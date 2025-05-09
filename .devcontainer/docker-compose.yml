@@ -1,5 +1,5 @@
 services:
-  python:
+  atcoder-python:
     build: ./
     image: atcoder
     container_name: atcoder
