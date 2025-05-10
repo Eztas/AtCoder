@@ -1,7 +1,10 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+N = int(input())
+A = list(map(int,input().split()))
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+sumA = 0
+
+for i in range(N):
+    for j in range(i+1, N):
+        sumA += A[i] * A[j]
+
+print(sumA)
