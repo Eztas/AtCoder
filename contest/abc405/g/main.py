@@ -13,20 +13,11 @@ for i in range(Q):
             B[j] = 0
     
     newB = [b for b in B if b != 0]
-
-    print(newB)
-
-    newBKeys = collections.Counter(newB).keys()
     newBCounts = collections.Counter(newB).values()
-
-    print(newBKeys)
-    print(newBCounts)
-
-    combination = math.factorial(len(newBCounts))
-
-    print(combination)
+    combination = math.factorial(sum(newBCounts))
 
     for count in newBCounts:
         combination /= math.factorial(count)
+
     print(int(combination))
     
