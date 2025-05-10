@@ -1,7 +1,12 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+R,X = map(int,input().split())
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+if X == 1:
+    if R >= 1600 and R <= 2999:
+        print("Yes")
+    else:
+        print("No")
+elif X == 2:
+    if R >= 1200 and R <= 2399:
+        print("Yes")
+    else:
+        print("No")
