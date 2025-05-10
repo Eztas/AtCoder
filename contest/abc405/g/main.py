@@ -7,5 +7,8 @@ for i in range(Q):
 
     for j in range(len(B)):
         if B[j] >= X:
-            B.remove(B[j])
-            
+            B[j] = 0
+    
+    newB = [b for b in B if b != 0]
+
+    print(newB)
