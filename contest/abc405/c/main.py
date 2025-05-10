@@ -1,12 +1,12 @@
 N = int(input())
 A = list(map(int,input().split()))
 
-sumA = 0
+sumA = sum(A)
 
-copyA = A.copy()
+sumAA = 0
 
 for i in range(N):
-    copyA.pop(0)
-    sumA += A[i] * sum(copyA)
+    sumA -= A[i]  
+    sumAA += sumA * A[i]
 
-print(sumA)
+print(sumAA)
