@@ -13,7 +13,7 @@ for i in range(Q):
     combination = math.factorial(sum(newBCounts))
 
     for count in newBCounts:
-        combination /= math.factorial(count)
+        combination //= math.factorial(count)
 
     print(int(combination % 998244353))
     
