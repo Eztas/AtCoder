@@ -1,32 +1,32 @@
 H, W, N = map(int,input().split())
 
-blocks = [[1 for _ in range(W)] for _ in range(H)]
-
+trashs = []
 for n in range(N):
     x, y = map(int, input().split())
-    blocks[x-1][y-1] = 0
+    trashs.append([x, y])
 
 Q = int(input())
 trash_num = N
-for _ in range(Q):
-    q, xy = map(int, input().split())
-    count = 0
 
-    if trash_num == 0:
+for _ in range(Q):
+    if len(trashs) == 0:
         print(0)
         continue
+    
+    q, xy = map(int, input().split())
+    count = 0
+    trashs_copy = trashs.copy()
 
     if q == 1:
-        for w in range(W):
-            if blocks[xy-1][w] == 0:
+        for trash_copy in trashs_copy:
+            if trash_copy[0] == xy:
                 count += 1
-                blocks[xy-1][w] = 1
+                trashs.remove(trash_copy)
 
     elif q == 2:
-        for h in range(H):
-            if blocks[h][xy-1] == 0:
+        for trash_copy in trashs_copy:
+            if trash_copy[1] == xy:
                 count += 1
-                blocks[h][xy-1] = 1
+                trashs.remove(trash_copy)
     
-    trash_num -= count
     print(count)
