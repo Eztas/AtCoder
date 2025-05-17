@@ -1,7 +1,14 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+A, B, C, D = map(int,input().split())
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+if A > C:
+  print("Yes")
+
+elif A < C:
+  print("No")
+
+else:
+  if B > D:
+    print("Yes")
+  else:
+    print("No")
+    
