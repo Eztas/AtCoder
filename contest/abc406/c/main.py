@@ -1,7 +1,12 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+N = int(input())
+P = list(map(int,input().split()))
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+count = 0
+
+for n in range(4, N):
+    for i in range(N-n+1):
+        flag = True
+        # A_1 < A_2である 
+        if P[i] >= P[i+1]:
+            flag = False
+            break
