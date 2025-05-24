@@ -32,18 +32,22 @@ S = input()
 count = 0
 
 while True:
+    S_number = int(S)
     S_len = len(S)
-    count += int(S[-1])
+    last_S = int(S[S_len-1])
+    count += last_S
     for idx in range(S_len):
-        if int(S[idx]) < int(S[-1]):
-            S[idx] = str(int(S[idx]) + 10 - int(S[-1]))
-
+        if int(S[idx]) < int(S[S_len-1]):
+            S_number -= (10 ** (S_len - idx - 1)) * (int(S[idx]))
+            S_number += (10 ** (S_len - idx - 1)) * (10 + int(S[idx]) - last_S)       
         else:
-            S[idx] = str(int(S[idx]) - int(S[-1]))
+            S_number -= (10 ** (S_len - idx - 1)) * (int(S[idx]) - last_S)
+
+    S_number //= 10
+    S = str(S_number)
+    count += 1
 
     if S_len == 1:
         break
-    
-    S = S[0:S_len-1]
 
 print(count)
