@@ -1,7 +1,49 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+S = input()
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+# 1桁の数字, A+B*その数値
+# 1 -> A, B, 2回
+# 2 -> A, B, B, 3回
+# 3 -> A, B, B, B, 4回
+
+# 10~19, 3 or 13
+# 10 -> A, B, A, 3回
+# 11 -> A, A, B, 3回
+# 12 -> A, B*9, A, B, B, 13回
+# 13 -> A, B*8, A, B, B, B, 13回
+
+# 20~29, 
+# 20 -> A, B, B, A, 4回
+# 21 -> A, B, A, B, 4回
+# 22 -> A, A, B, B, 4回
+# 23 -> A, B*9, A, B, B, B, 14回
+
+# 2桁=t_1t_2のとき、t_1<=t_2なら, t_1+2, elseならt_1+12
+
+# 100~
+# 100 -> A, B, A, A, 4回
+# 101 -> A, B, A, B*9, A, B(101<-090<-09<-10から9回B), 14回
+# 102 -> A, B, A, B*8, A, B, B, 14回
+# 199 -> A, B, B, A, A, B*9, 14回
+# 143 -> (143->810->81->70->7->0)
+# 143, 341->018->18
+
+# Sの下一桁が
+
+count = 0
+
+while True:
+    S_len = len(S)
+    count += int(S[-1])
+    for idx in range(S_len):
+        if int(S[idx]) < int(S[-1]):
+            S[idx] = str(int(S[idx]) + 10 - int(S[-1]))
+
+        else:
+            S[idx] = str(int(S[idx]) - int(S[-1]))
+
+    if S_len == 1:
+        break
+    
+    S = S[0:S_len-1]
+
+print(count)
