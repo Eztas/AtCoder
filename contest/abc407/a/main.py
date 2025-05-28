@@ -1,7 +1,8 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+A, B = map(int,input().split())
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+if abs((A//B) - (A/B)) < 0.5:
+  print(A//B)
+  
+else:
+  print(A//B + 1)
+  
