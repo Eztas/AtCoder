@@ -29,6 +29,8 @@ S = input()
 
 # Sの下一桁が
 
+# 最上位桁が0のときの対応ができていない
+
 count = 0
 
 while True:
@@ -37,13 +39,13 @@ while True:
     last_S = int(S[S_len-1])
     count += last_S
     for idx in range(S_len):
-        if int(S[idx]) < int(S[S_len-1]):
-            S_number -= (10 ** (S_len - idx - 1)) * (int(S[idx]))
-            S_number += (10 ** (S_len - idx - 1)) * (10 + int(S[idx]) - last_S)       
+        if int(S[idx]) < last_S:
+            S_number += (10 ** (S_len - idx - 1)) * (10 - last_S)       
         else:
             S_number -= (10 ** (S_len - idx - 1)) * last_S
 
     S_number //= 10
+    print(S_number)
     S = str(S_number)
     count += 1
 
