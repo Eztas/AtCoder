@@ -41,7 +41,7 @@ while True:
             S_number -= (10 ** (S_len - idx - 1)) * (int(S[idx]))
             S_number += (10 ** (S_len - idx - 1)) * (10 + int(S[idx]) - last_S)       
         else:
-            S_number -= (10 ** (S_len - idx - 1)) * (int(S[idx]) - last_S)
+            S_number -= (10 ** (S_len - idx - 1)) * last_S
 
     S_number //= 10
     S = str(S_number)
