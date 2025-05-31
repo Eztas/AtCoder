@@ -1,7 +1,6 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+N = int(input())
+A = list(map(int,input().split()))
+A_sorted = sorted(list(set(A)))
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+for a in A_sorted:
+    print(a,end='')
