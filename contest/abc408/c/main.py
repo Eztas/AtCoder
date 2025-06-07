@@ -1,20 +1,5 @@
-N, L = int(input())
+N, L = map(int,input().split())
 D = list(map(int,input().split()))
-
-# 円周における距離行列を作る
-
-dist = [[0] * N for _ in range(N)]
-
-# 1
-# 1-2 = d1 = d1 % 6,  min(L-d1, d1) 1-3 = d2 = d1 + d2 % 6,  min(L-d2, d2) 
-# 1-4 = d3 = d2 + d3 % 6,  min(L-d3, d3), 1-5 = d4 = d3 + d4 % 6,  min(L-d4, d4)
-
-for i in range(N):
-    for j in range(N):
-        if i == j:
-            dist[i][j] = 0
-        else:
-            dist[i][j] = abs(D[i] - D[j])
 
 # 円の座標リストを作る
 # 1を0(始点)とする
@@ -22,4 +7,26 @@ circle = [0] * N
 
 for i in range(1, N):
     circle[i] = (circle[i-1] + D[i-1]) % L
-    
+
+# 正三角形はこの座標リストの中で、距離感が一緒のものが3つある場合である
+
+count = 0
+
+for i in range(N):
+    for j in range(i + 1, N):
+        for k in range(j + 1, N):
+            # i, j, kの座標を取得
+            a = circle[i]
+            b = circle[j]
+            c = circle[k]
+            
+            # 距離を計算
+            d1 = min(abs(b - a), L-abs(b - a))
+            d2 = min(abs(c - b), L-abs(c - b))
+            d3 = min(abs(a - c), L-abs(a - c))
+
+            # 正三角形の条件を満たすかチェック
+            if d1 == d2 and d2 == d3:
+                count += 1
+
+print(count)
