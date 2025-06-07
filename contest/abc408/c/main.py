@@ -15,3 +15,11 @@ for i in range(N):
             dist[i][j] = 0
         else:
             dist[i][j] = abs(D[i] - D[j])
+
+# 円の座標リストを作る
+# 1を0(始点)とする
+circle = [0] * N
+
+for i in range(1, N):
+    circle[i] = (circle[i-1] + D[i-1]) % L
+    
