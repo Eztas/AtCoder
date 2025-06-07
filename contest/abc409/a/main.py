@@ -1,7 +1,12 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+N = int(input())
+T = input() # 文字列だから、splitいらない
+A = input()
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+text = "No"
+
+for n in range(N):
+    if T[n] == A[n] and T[n] == "o":
+        text = "Yes"
+        break
+
+print(text)
