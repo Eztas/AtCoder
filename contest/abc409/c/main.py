@@ -20,23 +20,9 @@ for i in range(0, N):
 # 0, 4, 8や1, 5, 9, 0, 3, 6など
 # つまり三角形になる関係性の組が決まっている
 # 各点の座標発生頻度を比較すれば、実質的に計算できる
-
 count = 0
-for i in range(N-2):
-    for j in range(i + 1, N-1):
-        for k in range(j + 1, N):
-            # i, j, kの座標を取得
-            a = circle[i]
-            b = circle[j]
-            c = circle[k]
-            
-            # 距離を計算
-            d1 = min(abs(b - a), L-abs(b - a))
-            d2 = min(abs(c - b), L-abs(c - b))
-            d3 = min(abs(a - c), L-abs(a - c))
 
-            # 正三角形の条件を満たすかチェック
-            if d1 == d2 and d2 == d3 and d1 != 0:
-                count += 1
+for i in range(L // 3):
+    count += freq[i] * freq[i + L // 3] * freq[i + 2 * L // 3]
 
 print(count)
