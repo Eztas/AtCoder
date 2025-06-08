@@ -1,6 +1,11 @@
 N, L = map(int,input().split())
 D = list(map(int,input().split()))
 
+# そもそもLが3の倍数でないと正三角形はできない
+if L % 3 != 0:
+    print(0)
+    exit()
+
 # 円の座標リストを作る
 # 1を0(始点)とする
 circle = [0] * N
