@@ -6,10 +6,14 @@ D = list(map(int,input().split()))
 circle = [0] * N
 freq = [0] * L
 
-for i in range(1, N):
-    circle[i] = (circle[i-1] + D[i-1]) % L
-    L[circle[i]] += 1
-    
+for i in range(0, N):
+    if i == 0:
+        circle[i] = 0
+        freq[0] += 1
+    else:
+        circle[i] = (circle[i-1] + D[i-1]) % L
+        freq[circle[i]] += 1
+
 # 正三角形はこの座標リストの中で、距離感が一緒のものが3つある場合である
 # 3 点 a,b,c が正三角形をなすということは，この 3 点が円周上に等間隔に並んでいるということ
 # 距離感はL/3になり, L/3になる関係同志の点で計算すればいい
