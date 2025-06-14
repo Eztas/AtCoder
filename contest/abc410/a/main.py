@@ -1,7 +1,10 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+N = int(input())
+A = list(map(int,input().split()))
+K = int(input())
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+count = 0
+for i in range(N):
+    if A[i] >= K:
+        count += 1
+
+print(count)
