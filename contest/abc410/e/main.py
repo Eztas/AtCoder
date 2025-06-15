@@ -23,10 +23,10 @@ for n in range(N):
     A.append(a)
     B.append(b)
 
-dp = [[0] * M for _ in range(H)]
+dp = [[0] * M+1 for _ in range(H+1)] # もし体力のみで倒した場合、H分倒すが、その時は0+H -> H+1分の配列になる, 魔法でも同様である
 
-for m in range(M):
-    for h in range(H):
+for m in range(M+1):
+    for h in range(H+1):
         max_enemy = dp[h][m]
         dp[h+1][m] = max(dp[h+1][m], max_enemy) # 次の体力で倒す敵の数と今の体力で倒す敵の数で最大の敵の数を取得
         dp[h][m+1] = max(dp[h][m+1], max_enemy) # 次の体力で倒す敵と今の体力で倒す敵で最大の方を取得
@@ -34,8 +34,11 @@ for m in range(M):
         if max_enemy < N: # 今までの敵を倒して、まだ残っていたら計算, N以上ならこれ以上敵もいないから増えない、つまり動的計画法でも増えることはない
             # 今まで敵を倒していたら、次に当たる敵がそもそもA[max_enemy]になる
             # 例: 2人の敵を倒していれば、0-indexなので、次に当たる敵はA[2]
+            # つまりこの敵を倒した時、敵の数もしくはそれ以外のルートで倒した敵の数のうちの最大値となる
             if h + A[max_enemy] <= H: 
                 dp[h + A[max_enemy]][m] = max(dp[h + A[max_enemy]][m], max_enemy + 1)
             # 今まで敵を倒していたら、次に当たる敵がそもそもA[max_enemy]になる
             if m + B[max_enemy] <= M:
                 dp[h][m + B[max_enemy]] = max(dp[h][m + B[max_enemy]], max_enemy + 1)
+
+print(dp[H][M])
