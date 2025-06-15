@@ -21,3 +21,12 @@ dp = [[0] * M for _ in range(H)]
 
 for m in range(M):
     for h in range(H):
+        max_enemy = dp[h][m]
+        dp[h+1][m] = max(dp[h+1][m], max_enemy)
+        dp[h][m+1] = max(dp[h][m+1], max_enemy)
+
+        if max_enemy < N:
+            if h + A[max_enemy] <= H:
+                dp[h + A[max_enemy]][m] = max(dp[h + A[max_enemy]][m], max_enemy + 1)
+            if m + B[max_enemy] <= M:
+                dp[h][m + B[max_enemy]] = max(dp[h][m + B[max_enemy]], max_enemy + 1)
