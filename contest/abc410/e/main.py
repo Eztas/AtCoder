@@ -10,6 +10,12 @@ N, H, M = map(int,input().split())
 # 残りの体力と魔力で考える、最小の減り方を考える動的計画法を考えていたが、
 # こういう考え方らしい
 
+# 最適なルートなどはこの場合、分からない
+# そのため、動的計画法で、ありうるパターン全てにおける場合を計算
+# 体力と魔力の最大値をそれぞれH, Mとする
+# それまでの間に、どのような手段で敵を倒していたとしても、最終的にH, M内のできごとなら関係ない
+# しかし、過程で最大値を求めながら調べることで、最大値が分かる
+
 A = []
 B = []
 for n in range(N):
@@ -22,11 +28,14 @@ dp = [[0] * M for _ in range(H)]
 for m in range(M):
     for h in range(H):
         max_enemy = dp[h][m]
-        dp[h+1][m] = max(dp[h+1][m], max_enemy)
-        dp[h][m+1] = max(dp[h][m+1], max_enemy)
+        dp[h+1][m] = max(dp[h+1][m], max_enemy) # 次の体力で倒す敵の数と今の体力で倒す敵の数で最大の敵の数を取得
+        dp[h][m+1] = max(dp[h][m+1], max_enemy) # 次の体力で倒す敵と今の体力で倒す敵で最大の方を取得
 
-        if max_enemy < N:
-            if h + A[max_enemy] <= H:
+        if max_enemy < N: # 今までの敵を倒して、まだ残っていたら計算, N以上ならこれ以上敵もいないから増えない、つまり動的計画法でも増えることはない
+            # 今まで敵を倒していたら、次に当たる敵がそもそもA[max_enemy]になる
+            # 例: 2人の敵を倒していれば、0-indexなので、次に当たる敵はA[2]
+            if h + A[max_enemy] <= H: 
                 dp[h + A[max_enemy]][m] = max(dp[h + A[max_enemy]][m], max_enemy + 1)
+            # 今まで敵を倒していたら、次に当たる敵がそもそもA[max_enemy]になる
             if m + B[max_enemy] <= M:
                 dp[h][m + B[max_enemy]] = max(dp[h][m + B[max_enemy]], max_enemy + 1)
