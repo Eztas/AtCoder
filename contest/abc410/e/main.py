@@ -10,10 +10,14 @@ N, H, M = map(int,input().split())
 # 残りの体力と魔力で考える、最小の減り方を考える動的計画法を考えていたが、
 # こういう考え方らしい
 
+A = []
+B = []
 for n in range(N):
-    A, B = map(int,input().split())
-    
-    if A <= H and A < B:
-        H = H - A
-    elif B <= W and A >= B:
-        W = W - B
+    a, b = map(int,input().split())
+    A.append(a)
+    B.append(b)
+
+dp = [[0] * M for _ in range(H)]
+
+for m in range(M):
+    for h in range(H):
