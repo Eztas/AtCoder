@@ -23,11 +23,11 @@ for n in range(N):
     A.append(a)
     B.append(b)
 
-dp = [[0] * (M+1) for _ in range(H+1)] # もし体力のみで倒した場合、H分倒すが、その時は0+H -> H+1分の配列になる, 魔法でも同様である
+dp = [[0] * (M+2) for _ in range(H+2)] # もし体力のみで倒した場合、H分倒すが、その時は0+H -> H+1分の配列になる, 魔法でも同様である
 
 # H+1, M+1だが、h+1, m+1の計算はするので、H, Mまで
-for m in range(M):
-    for h in range(H):
+for m in range(M+1):
+    for h in range(H+1):
         max_enemy = dp[h][m]
         dp[h+1][m] = max(dp[h+1][m], max_enemy) # 次の体力で倒す敵の数と今の体力で倒す敵の数で最大の敵の数を取得
         dp[h][m+1] = max(dp[h][m+1], max_enemy) # 次の体力で倒す敵と今の体力で倒す敵で最大の方を取得
@@ -41,5 +41,11 @@ for m in range(M):
             # 今まで敵を倒していたら、次に当たる敵がそもそもA[max_enemy]になる
             if m + B[max_enemy] <= M:
                 dp[h][m + B[max_enemy]] = max(dp[h][m + B[max_enemy]], max_enemy + 1)
+
+for h in range(H+1):
+    for m in range(M+1):
+        print(dp[h][m],end=' ')
+        if m == M:
+            print()
 
 print(dp[H][M])
