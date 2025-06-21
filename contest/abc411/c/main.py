@@ -1,7 +1,11 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+N, Q = map(int,input().split())
+A = list(map(int,input().split()))
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+# 白を0, 黒を1とする, 左右1列
+line = [0] * N
+
+for q in range(Q):
+    count = 0
+    line[A[q] - 1] = 1 - line[A[q] - 1]  # A[q]の色を反転
+    print(count)
+    
