@@ -1,7 +1,7 @@
-import sys
-n = int(input())
-n,m = map(int,input().split())
+P = input()
+L = int(input())
 
-a = list(map(int,input().split()))
-li = [list(map(int, input().split())) for _ in range(n)]
-data = sys.stdin.read().splitlines()
+if len(P) < L:
+    print("No")
+else:
+    print("Yes")
