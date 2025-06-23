@@ -162,6 +162,12 @@ CLIでの実行に何か制限があるらしい
 
 [acloginの対応](https://github.com/key-moon/aclogin/blob/main/README.md)
 
+# その他
+
+[AtCoderライブラリ(C++)](https://miiitomi.github.io/p/kyopro-env/)
+
+[AtCoderライブラリ(Python)](https://github.com/not522/ac-library-python/)
+
 # 参考文献
 
 [VSCode + DockerでAtCoderのテスト・提出ができる環境構築【Python,PyPy】](https://zenn.dev/gomatofu/articles/282adadcb5d769)
@@ -171,3 +177,5 @@ CLIでの実行に何か制限があるらしい
 [Dockerコンテナ接続, VSCode](https://qiita.com/75ks/items/b2961e8562c353f42d21)
 
 [MacでDocker+VSCode構築している例](https://miiitomi.github.io/p/kyopro-env/)
+
+[AtCoderライブラリ, Python使用例](https://qiita.com/hyouchun/items/4958618268407a5442cc)
