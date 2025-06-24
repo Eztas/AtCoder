@@ -103,6 +103,25 @@ Set-Cookie3: REVEL_SESSION="xxx"
 
 16. `acc config default-template python`でデフォルトのテンプレートをpythonに変更
 
+# VSCodeのDev Containersで開く手順
+
+1. もし右下にこれが出てきたらこれを押すだけで良い
+  ![alt text](img/reopen_dev_containers.png)
+
+2. (出なかったら)command(ctrl) + shift + pを押す
+
+3. 上のAdd configuration to workspaceを選択
+  ![alt text](img/configration_where.png)
+
+4. From docker-compose.ymlを選択
+  ![alt text](img/configration_how.png)
+
+5. 0 selectedで進む(Pythonくらいは入れてもいいかも)
+  ![alt text](img/additional_feat.png)
+
+6. 0 selectedで進む(個人開発ならいらないかも)
+  ![alt text](img/optional_files.png)
+
 ## 日頃の手順
 
 1. `docker compose start`で開始
@@ -162,6 +181,12 @@ CLIでの実行に何か制限があるらしい
 
 [acloginの対応](https://github.com/key-moon/aclogin/blob/main/README.md)
 
+# その他
+
+[AtCoderライブラリ(C++)](https://miiitomi.github.io/p/kyopro-env/)
+
+[AtCoderライブラリ(Python)](https://github.com/not522/ac-library-python/)
+
 # 参考文献
 
 [VSCode + DockerでAtCoderのテスト・提出ができる環境構築【Python,PyPy】](https://zenn.dev/gomatofu/articles/282adadcb5d769)
@@ -169,3 +194,7 @@ CLIでの実行に何か制限があるらしい
 [GitHubリポジトリ](https://github.com/gomatofu/atcoder_python/)
 
 [Dockerコンテナ接続, VSCode](https://qiita.com/75ks/items/b2961e8562c353f42d21)
+
+[MacでDocker+VSCode構築している例](https://miiitomi.github.io/p/kyopro-env/)
+
+[AtCoderライブラリ, Python使用例](https://qiita.com/hyouchun/items/4958618268407a5442cc)
