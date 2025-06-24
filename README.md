@@ -103,6 +103,25 @@ Set-Cookie3: REVEL_SESSION="xxx"
 
 16. `acc config default-template python`でデフォルトのテンプレートをpythonに変更
 
+# VSCodeのDev Containersで開く手順
+
+1. もし右下にこれが出てきたらこれを押すだけで良い
+  ![alt text](img/reopen_dev_containers.png)
+
+2. (出なかったら)command(ctrl) + shift + pを押す
+
+3. 上のAdd configuration to workspaceを選択
+  ![alt text](img/configration_where.png)
+
+4. From docker-compose.ymlを選択
+  ![alt text](img/configration_how.png)
+
+5. 0 selectedで進む(Pythonくらいは入れてもいいかも)
+  ![alt text](img/additional_feat.png)
+
+6. 0 selectedで進む(個人開発ならいらないかも)
+  ![alt text](img/optional_files.png)
+
 ## 日頃の手順
 
 1. `docker compose start`で開始
