@@ -23,6 +23,17 @@ for t in range(T):
         for n in range(1, N):
             if effected[n]:
                 continue
+            if S[right] * 2 >= S[n]: # 右に倒せる場合
+                if nxt == -1 or S[n] > S[nxt]: # まだ倒していない or 今保持している次のドミノより大きいかつ範囲内なら
+                    nxt = n # 今のドミノを次倒すドミノにする
+
+        if nxt == -1:  # 次に倒すドミノがない場合
+            count = -1
+            break
+        else:          # 次に倒すドミノがある場合
+            effected[nxt] = True  # 倒れたドミノを管理する
+            right = nxt  # 右に倒したドミノを更新
+            count += 1  # 倒したドミノの数を更新
 
     print(count)
     
