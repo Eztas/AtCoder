@@ -11,30 +11,18 @@ for t in range(T):
     N = int(input())
     S = list(map(int,input().split()))
     count = 1
-    last = 0 # 場所で管理するのがいい？
-    used = [False] * N  # 倒れたドミノを管理するためのリスト, 貪欲法では一度通ったものは使わない　
+    right = 0 # 現時点での一番右
+    effected = [False] * N  # 倒れたドミノを管理するためのリスト, 貪欲法では一度通ったものは使わない　
 
     while True:
-        if S[last] * 2 >= S[N-1]:
+        if S[right] * 2 >= S[N-1]:
             count += 1
             break
 
-        nxt = -1
+        nxt = -1 # 次に倒すドミノ、なければ-1, またN-1を示す
         for n in range(1, N):
-            if used[n]:
+            if effected[n]:
                 continue
-            if S[last] * 2 >= S[n]:
-                if nxt == -1 and S[nxt] > S[n]:
-                    continue
-                nxt = n
-
-        if nxt == -1 or S[nxt] <= S[n]:
-            count = -1
-            break
-
-        count += 1
-        used[nxt] = True
-        last = nxt
 
     print(count)
     
