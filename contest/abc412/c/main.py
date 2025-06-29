@@ -8,20 +8,31 @@ T = int(input())
 for t in range(T):
     N = int(input())
     S = list(map(int,input().split()))
-    count = math.log2(S[N-1]//S[0])
-    domino = S[0]
-    for c in range(math.ceil(count)):
-        domino_flag = False
-        for n in range(N):
-            if domino < S[n] and S[n] <= 2 * domino:
-                domino = S[n]
-                domino_flag = True
-                break
+    count = 1
+    last = 0 # 場所で管理するのがいい？
+    used = [False] * N  # 倒れたドミノを管理するためのリスト, 貪欲法では一度通ったものは使わない　
 
-        if not domino_flag:
-            print(-1)
+    while True:
+        if S[last] * 2 >= S[N-1]:
+            count += 1
             break
 
-    if domino_flag:
-        print(math.ceil(count) + 1)
+        nxt = -1
+        for n in range(1, N):
+            if used[n]:
+                continue
+            if S[last] * 2 >= S[n]:
+                if nxt == -1 and S[nxt] > S[n]:
+                    continue
+                nxt = n
+
+        if nxt == -1 or S[nxt] <= S[n]:
+            count = -1
+            break
+
+        count += 1
+        used[nxt] = True
+        last = nxt
+
+    print(count)
     
