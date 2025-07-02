@@ -2,7 +2,13 @@
 
 AtCoderにおけるバージョン管理等を行うためのリポジトリ
 
-Python + Docker + VSCode + WSL
+技術スタック:
+
+[![tools](https://skillicons.dev/icons?i=docker,git,github,py,npm,vscode&perline=12)](https://skillicons.dev)
+
+使用環境: 
+
+Mac, WSL
 
 ## Dockerfile
 
