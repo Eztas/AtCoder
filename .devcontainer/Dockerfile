@@ -25,3 +25,15 @@ RUN python -m pip install --upgrade pip \
 RUN pip3 install online-judge-tools
 RUN pip install aclogin
 RUN npm install -g atcoder-cli
+
+# atcoder-cli用の設定ディレクトリを先に作成し、存在を保証する
+RUN mkdir -p /home/vscode/.config/atcoder-cli-nodejs
+
+# Mac側(ホスト)のrestore_filesフォルダから設定をコピーし、
+# 所有者をvscodeユーザーに設定する
+COPY --chown=vscode:vscode ./template/template.json /home/vscode/.config/atcoder-cli-nodejs/template.json
+COPY --chown=vscode:vscode ./template/main.py /home/vscode/.config/atcoder-cli-nodejs/main.py
+
+# 最後にユーザーをvscodeに切り替え
+USER vscode
+WORKDIR /AtCoder
