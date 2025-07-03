@@ -123,7 +123,7 @@ Set-Cookie3: REVEL_SESSION="xxx"
 
 16. `acc config default-template python`でデフォルトのテンプレートをpythonに変更
 
-# VSCodeのDev Containersで開く手順
+## VSCodeのDev Containersで開く手順
 
 1. もし右下にこれが出てきたらこれを押すだけで良い
   ![alt text](img/reopen_dev_containers.png)
