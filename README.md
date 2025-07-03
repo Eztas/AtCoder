@@ -40,13 +40,13 @@ Dockerfileは主にイメージをビルドするための手順を記述する�
 
 Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイメージを使用する設定を行い、docker-compose.ymlを使用して、複数のサービスを定義し、それらを同時に起動可能
 
-## Ver.1 4/26~7/2
+## Ver.1 2025/4/26~2025/7/2
 
 Python 3.8(git switchが使えない)
 
 テンプレートファイル、ログインなどは手動
 
-## Ver.2 7/3~
+## Ver.2 2025/7/3~
 
 Python 3.11-slim(git switchが使える)
 
