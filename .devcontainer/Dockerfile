@@ -1,4 +1,4 @@
-FROM python:3.8.2
+FROM python:3.11-slim
 
 ARG USERNAME=vscode
 ARG GROUPNAME=${USERNAME}
@@ -25,3 +25,18 @@ RUN python -m pip install --upgrade pip \
 RUN pip3 install online-judge-tools
 RUN pip install aclogin
 RUN npm install -g atcoder-cli
+
+# atcoder-cli用の設定ディレクトリを先に作成
+RUN mkdir -p /home/vscode/.config/atcoder-cli-nodejs
+
+# Mac側(ホスト)のrestore_filesフォルダから設定をコピーし、
+# 所有者をvscodeユーザーに設定する
+COPY --chown=vscode:vscode ./template/template.json /home/vscode/.config/atcoder-cli-nodejs/template.json
+COPY --chown=vscode:vscode ./template/main.py /home/vscode/.config/atcoder-cli-nodejs/main.py
+
+# ホームディレクトリ全体の所有者をvscodeユーザーに変更する
+RUN chown -R vscode:vscode /home/vscode
+
+# 最後にユーザーをvscodeに切り替え
+USER vscode
+WORKDIR /AtCoder

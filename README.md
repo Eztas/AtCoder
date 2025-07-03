@@ -2,7 +2,13 @@
 
 AtCoderにおけるバージョン管理等を行うためのリポジトリ
 
-Python + Docker + VSCode + WSL
+技術スタック:
+
+[![tools](https://skillicons.dev/icons?i=docker,git,github,py,npm,vscode&perline=12)](https://skillicons.dev)
+
+使用環境: 
+
+Mac, WSL
 
 ## Dockerfile
 
@@ -34,7 +40,21 @@ Dockerfileは主にイメージをビルドするための手順を記述する�
 
 Dockerfileで定義したイメージを基に、devcontainer.jsonでそのイメージを使用する設定を行い、docker-compose.ymlを使用して、複数のサービスを定義し、それらを同時に起動可能
 
-## 設定手順(初期設定)
+## Ver.1 2025/4/26~2025/7/2
+
+Python 3.8(git switchが使えない)
+
+テンプレートファイル、ログインなどは手動
+
+## Ver.2 2025/7/3~
+
+Python 3.11-slim(git switchが使える)
+
+テンプレートファイルはこちら側で生成
+
+ログイン、セッション情報は手動(セキュリティ上自動化が少し大変)
+
+## 設定手順(初期設定, Ver.1)
 
 ※ 事前のインストールは既に完了済み(VSCode, Docker, WSL)
 
@@ -103,7 +123,7 @@ Set-Cookie3: REVEL_SESSION="xxx"
 
 16. `acc config default-template python`でデフォルトのテンプレートをpythonに変更
 
-# VSCodeのDev Containersで開く手順
+## VSCodeのDev Containersで開く手順
 
 1. もし右下にこれが出てきたらこれを押すだけで良い
   ![alt text](img/reopen_dev_containers.png)
