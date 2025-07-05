@@ -6,12 +6,20 @@ for n in range(N):
     S.append(s)
 
 count = 0
+combinedwords = []
 
 for i in range(N):
     for j in range(N):
+        existed = False
         if i == j:
             continue
         else:
-            count += 1
+            for combinedword in combinedwords:
+                if S[i] + S[j] == combinedword:
+                    existed = True
+                    continue
+            if not existed:
+                combinedwords.append(S[i] + S[j])
+                count += 1
 
 print(count)
