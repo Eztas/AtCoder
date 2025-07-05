@@ -24,7 +24,7 @@ for _ in range(Q):
                 C[0] -= k
                 break
             else:
-                sumSlice += X[0] * k
+                sumSlice += X[0] * C[0]
                 k -= C[0]
                 C.pop(0)
                 X.pop(0)
