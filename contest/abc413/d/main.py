@@ -18,39 +18,39 @@ for _ in range(T):
     N = int(input())
     A = list(map(int,input().split()))
 
-    all_same = False
+    isEqual = False
     if A[0] > 0:
-        plus_count = 1
-        minus_count = 0
+        plusCount = 1
+        minusCount = 0
     elif A[0] < 0:
-        plus_count = 0
-        minus_count = 1
+        plusCount = 0
+        minusCount = 1
 
     for n in range(1, N):
         if abs(A[n]) != abs(A[0]):
-            all_same = False
+            isEqual = False
             break
         else:
             if A[n] > 0:
-                plus_count += 1
+                plusCount += 1
             elif A[n] < 0:
-                minus_count += 1
-            all_same = True
+                minusCount += 1
+            isEqual = True
 
     # 1, 1, 1, 1, 1 ok
     # 1, -1, 1, -1, 1 ok
     # -1, -1, -1, -1, -1 ok
     # 1, -1, 1, -1, -1 no
     # 1, -1, 1, -1, 1, -1 ok
-    if all_same:
-        if plus_count == N or minus_count == N:
+    if isEqual:
+        if plusCount == N or minusCount == N:
             print("Yes")
             continue
         else:
-            if plus_count == minus_count: # plus_count=minus_count=N/2
+            if plusCount == minusCount: # plusCount=minusCount=N/2
                 print("Yes")
                 continue
-            elif (plus_count == minus_count + 1) or (minus_count == plus_count + 1):
+            elif (plusCount == minusCount + 1) or (minusCount == plusCount + 1):
                 print("Yes")
                 continue
             else:
