@@ -1,7 +1,8 @@
+from collections import deque
 Q = int(input())
 
-C = []
-X = []
+C = deque([])
+X = deque([])
 
 # 1 c x, xをc個追加, 下手すればO(10^9)なので正攻法はダメ
 # このとき、k はその時点での A の長さ以下であることが保証される。
@@ -26,7 +27,7 @@ for _ in range(Q):
             else:
                 sumSlice += X[0] * C[0]
                 k -= C[0]
-                C.pop(0)
-                X.pop(0)
+                C.popleft()
+                X.popleft()
 
         print(sumSlice)
