@@ -16,10 +16,7 @@ for _ in range(T):
     N = int(input())
     A = list(map(int,input().split()))
 
-    for n in range(N):
-        A[n] = abs(A[n])
-
-    A.sort()
+    A.sort(key=abs)
 
     isGeometric = True
     for n in range(1, N-1):
