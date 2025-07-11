@@ -15,3 +15,11 @@
 [例2](https://atcoder.jp/contests/abc413/tasks/abc413_d)
 
 [結果2](./../contest/abc413/d/main.py)
+
+# forループで素直に数えると計算量超過する時は‥
+
+## 境目の数を数える
+
+[例1](https://atcoder.jp/contests/abc411/tasks/abc411_c)
+
+[結果1](./../contest/abc411/c/main.py)
