@@ -23,3 +23,7 @@
 [例1](https://atcoder.jp/contests/abc411/tasks/abc411_c)
 
 [結果1](./../contest/abc411/c/main.py)
+
+# いずれ解けそう(何となくはわかるが、今はまだ言語化できない)
+
+[abc411-D-Conflict2](https://atcoder.jp/contests/abc411/tasks/abc411_d)
