@@ -10,11 +10,20 @@ A = list(map(int,input().split()))
 # いちいち数を数えるためにforループを回すと計算量がかかるが
 # 01反転の際に生じる境目の変動を管理すれば、forループはいらない
 
-line = [0] * N
-black_list = []
+# 例外
+# 先頭や後ろだけが変わる時
+# 1, 0, 0, 0, 0 # 境目は1だが、黒の区間は1つ
+# 1, 1, 0, 0, 0 # 境目は1だが、黒の区間は1つ
+
+# 先頭も後ろも変わる時
+# 1, 0, 0, 0, 1 # 境目は2だが、黒の区間は2つ
+
+# 擬似的に先頭と後ろに白を追加しておくと、上記の場合でも境目が通常時と同じ
+
+line = [0] * (N+2)
+borderCount = 0  # 境目の数
 for q in range(Q):
-    count = 0
-    line[A[q] - 1] = 1 - line[A[q] - 1]  # A[q]の色を反転
-    black_list.append(A[q] - 1)  #  黒の位置を記録
-    count += 1
-    print(count)
+    line[A[q]] = 1 - line[A[q]]  # A[q]の色を反転
+    borderCount += abs(line[A[q] - 1] - line[A[q]])  # 前の境目の数を更新
+    borderCount += abs(line[A[q] + 1] - line[A[q]])  # 後の境目の数を更新
+    print(borderCount//2)
