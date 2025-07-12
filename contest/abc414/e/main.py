@@ -10,11 +10,12 @@ N = int(input())
 # N=10^12
 # a=10^12, b=10^12, c=10^12
 # a>bなので、1/2*10^24*10^12?
+# cはbより必ず小さい
 
 count = 0
-for c in range(1, N + 1):
-    for b in range(1, N + 1):
-        for a in range(b + 1, N + 1):
+for a in range(3, N+1):
+    for b in range(2, a):
+        for c in range(1, b):
             if c == a % b:
                 count += 1
 
