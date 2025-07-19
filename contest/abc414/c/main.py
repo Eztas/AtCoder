@@ -16,16 +16,17 @@ def base10int(value, base):
 
 total = 0
 
-# 1桁数字の計算
+# 1桁数字の計算, Nが1桁の時の対応を忘れていた
 for n in range(1, 10):
-    n_str = str(n)
-    n_a = base10int(n, A)
-    if n_a == n_a[::-1]:
-        total += n
+    if n <= N:
+        n_str = str(n)
+        n_a = base10int(n, A)
+        if n_a == n_a[::-1]:
+            total += n
 
 # 2桁以上の計算(偶数列, 奇数列の追加)
 # 999999|999999, 10^12,1000000|000000
-for n in range(1, 10**7):
+for n in range(1, 10**6):
     n_str = str(n)
     # 間に数字を挟まずに反転したものを追加
     n_str_mirror = n_str + n_str[::-1]
