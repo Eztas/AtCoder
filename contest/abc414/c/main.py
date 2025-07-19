@@ -1,19 +1,13 @@
 A = int(input())
 N = int(input())
 
-# N=10^12
-# ただのforループでは超過
-# シンプルにNのフィルターが必要
-# ざっとNを半分以下にする必要がある
-# whileループにすればいける?
+# 回文=そもそも半分さえ後ろを複製するだけで良い
+# 奇数桁 = n/2+1さえあればいい
+# 偶数桁 = n/2さえあればいい
+# N=10^12で13桁, 10^7さえあればいい
+# N/2の範囲で網羅できる
 
-# まずNが回文である前提
-# Aの数は必ず、10になるからならない
-# 1~9までA以外が該当
-# 2桁の数字 = 11, 22などの11の倍数の加算
-# 3桁の数字 = 1~1, 2~2の100の位と1の位が同じ数値
-# 4桁の数字 = 上2桁の反転が下2桁だが単純化できない, 1~1は必須で、1001+110+110
-# 5桁の数字 = 1~1, 1010を加算する
+# Nまで計算するか、10^6(7桁)まで毎回見るかどうか
 
 def base10int(value, base):
     if (int(value / base)):
@@ -21,15 +15,20 @@ def base10int(value, base):
     return str(value % base)
 
 total = 0
-n = 1
-while True:
+
+# 1桁数字の計算
+for n in range(1, 10):
+    n_str = str(n)
+    n_a = base10int(n, A)
+    if n_str == n_str[::-1] and n_a == n_a[::-1]:
+        total += n
+
+# 2桁以上の計算
+for n in range(1, 10**6):
     n_str = str(n)
     n_a = base10int(n, A)
     if n_str == n_str[::-1] and n_a == n_a[::-1]:
         total += n
     
-    n += 1
-    if n > N:
-        break
 
 print(total)
