@@ -17,6 +17,7 @@ def base10int(value, base):
 total = 0
 
 # 1桁数字の計算, Nが1桁の時の対応を忘れていた
+# 9進数の時、この再帰のせいでTLEの可能性(コードテストで試すと3291msになった事例)
 for n in range(1, 10):
     if n <= N:
         n_str = str(n)
