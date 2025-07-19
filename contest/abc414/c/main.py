@@ -20,25 +20,28 @@ total = 0
 for n in range(1, 10):
     n_str = str(n)
     n_a = base10int(n, A)
-    if n_str == n_str[::-1] and n_a == n_a[::-1]:
+    if n_a == n_a[::-1]:
         total += n
 
 # 2桁以上の計算(偶数列, 奇数列の追加)
-for n in range(1, 10**6):
+# 999999|999999, 10^12,1000000|000000
+for n in range(1, 10**7):
     n_str = str(n)
     # 間に数字を挟まずに反転したものを追加
     n_str_mirror = n_str + n_str[::-1]
     if int(n_str_mirror) <= N:
         n_a = base10int(int(n_str_mirror), A)
-        if n_str_mirror == n_str_mirror[::-1] and n_a == n_a[::-1]:
+        if n_a == n_a[::-1]:
             total += int(n_str_mirror)
+    else:
+        break
             
     # 間に数字を挟んで反転したものを追加
     for i in range(0, 10):
         n_str_mirror_sand = n_str + str(i) + n_str[::-1]
         if int(n_str_mirror_sand) <= N:
             n_a = base10int(int(n_str_mirror_sand), A)
-            if n_str_mirror_sand == n_str_mirror_sand[::-1] and n_a == n_a[::-1]:
+            if n_a == n_a[::-1]:
                 total += int(n_str_mirror_sand)
     
 print(total)
