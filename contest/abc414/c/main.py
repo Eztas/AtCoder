@@ -1,3 +1,4 @@
+import numpy as np
 A = int(input())
 N = int(input())
 
@@ -21,7 +22,7 @@ total = 0
 for n in range(1, 10):
     if n <= N:
         n_str = str(n)
-        n_a = base10int(n, A)
+        n_a = str(np.base_repr(n, A))
         if n_a == n_a[::-1]:
             total += n
 
@@ -32,7 +33,7 @@ for n in range(1, 10**6):
     # 間に数字を挟まずに反転したものを追加
     n_str_mirror = n_str + n_str[::-1]
     if int(n_str_mirror) <= N:
-        n_a = base10int(int(n_str_mirror), A)
+        n_a = str(np.base_repr(int(n_str_mirror), A))
         if n_a == n_a[::-1]:
             total += int(n_str_mirror)
     else:
@@ -42,7 +43,7 @@ for n in range(1, 10**6):
     for i in range(0, 10):
         n_str_mirror_sand = n_str + str(i) + n_str[::-1]
         if int(n_str_mirror_sand) <= N:
-            n_a = base10int(int(n_str_mirror_sand), A)
+            n_a = str(np.base_repr(int(n_str_mirror_sand), A))
             if n_a == n_a[::-1]:
                 total += int(n_str_mirror_sand)
     
