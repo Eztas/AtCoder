@@ -1,4 +1,10 @@
 S = input()
-L = int(input())
-D = list(map(int,input().split()))
-N, Q = map(int,input().split())
+stock = -1
+
+for i, s in enumerate(S):
+    if s == '#':
+        if stock == -1:
+            stock = i + 1
+        else:
+            print(str(stock)+','+str(i + 1))
+            stock = -1
