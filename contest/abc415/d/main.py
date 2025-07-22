@@ -1,27 +1,33 @@
 N, M = map(int,input().split())
 
-# 初期値=N本の空いていないコーラ
-# i回飲む -> N-iの空いていない, iの空いている
-
-# 行動選択
-# 最大値=動的計画法
-
-# seal 最大, seal = d[x][y]
-# iが同じ動作はできる, 動的計画法しづらい
+# 最前の行動ばかり取るようにすることを意識してまず力技
 
 notEmpty = N
 empty = 0
 
-A = [] # 渡す瓶
-B = [] # 貰う瓶(シールは毎回1枚)
+bottleExchanges = [] # 渡す瓶, 貰う瓶、実質減る瓶
+seals = 0
 
-# 優先行動, A/Bが一番いい行動をとるようにする
-# A/Bが悪い、かつ消費が多いものは排他
-# 
-
-for m in M:
+for _ in range(M):
     a, b = map(int,input().split())
-    A.append(a)
-    B.append(b)
+    diff = a - b
+    bottleExchanges.append([a, b, diff])
+
+# diffの小さいものから
+sortedBottleExchanges = sorted(bottleExchanges, key=lambda x: x[2])
 
 while True:
+    if notEmpty <= 0:
+        break
+    empty += notEmpty # 飲む
+    notEmpty = 0
+
+    for bottleExchange in sortedBottleExchanges:
+        if empty >= bottleExchange[0]:
+            plusSeals = empty // bottleExchange[0] # 最善の行動を繰り返してシールを取る
+            empty = empty % bottleExchange[0]
+            notEmpty += plusSeals * bottleExchange[1]
+            seals += plusSeals
+            break
+
+print(seals)
