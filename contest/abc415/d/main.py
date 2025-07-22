@@ -1,9 +1,13 @@
 N, M = map(int,input().split())
 
 # 最前の行動ばかり取るようにすることを意識してまず力技
+# A/Bじゃなくても、A-Bの少ないものをやるので良さそう
+# この考え方なだけで貪欲法に該当するらしい
 
-notEmpty = N
-empty = 0
+# 計算量は初手のソートが一番時間かかる(O(MlogM))
+# だけどTLE, 瓶の受け渡しの計算時間を減らせるか？
+# -> そもそも飲み瓶、空き瓶で分けず
+# Aではなく差分のみで空き瓶を減らす方向性で続けて、無理なら次へにする
 
 bottleExchanges = [] # 渡す瓶, 貰う瓶、実質減る瓶
 seals = 0
@@ -16,18 +20,14 @@ for _ in range(M):
 # diffの小さいものから
 sortedBottleExchanges = sorted(bottleExchanges, key=lambda x: x[2])
 
-while True:
-    if notEmpty <= 0:
+for bottleExchange in sortedBottleExchanges:
+    if N <= 0: # N=空き瓶がないなら別にいい
         break
-    empty += notEmpty # 飲む
-    notEmpty = 0
+    if N < bottleExchange[0]: # そもそも交換できない
+        continue
 
-    for bottleExchange in sortedBottleExchanges:
-        if empty >= bottleExchange[0]:
-            plusSeals = empty // bottleExchange[0] # 最善の行動を繰り返してシールを取る
-            empty = empty % bottleExchange[0]
-            notEmpty += plusSeals * bottleExchange[1]
-            seals += plusSeals
-            break
+    plusSeals = N // bottleExchange[2] # 最善の行動を繰り返してシールを取る
+    N = N % bottleExchange[2]
+    seals += plusSeals
 
 print(seals)
