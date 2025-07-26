@@ -11,10 +11,12 @@ N, K, X = map(int,input().split())
 # countを増やしてその時の番号をつけて、
 # indexの文字を表示させたらいい
 
-index_S = [0] * N
 S = []
 for n in range(N):
     s = input()
     S.append(s)
 
-print(index_S)
+sorted_S = sorted(S)
+# f(0, 0), X=1, f(0, 1), X=2, f(0, 2), X=3
+# f(1, 0), X=4
+print(sorted_S)
