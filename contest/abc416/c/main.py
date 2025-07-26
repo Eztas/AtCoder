@@ -19,4 +19,22 @@ for n in range(N):
 sorted_S = sorted(S)
 # f(0, 0), X=1, f(0, 1), X=2, f(0, 2), X=3
 # f(1, 0), X=4
-print(sorted_S)
+
+A = [0] * K
+
+N = N - 1
+
+for k in range(K):
+    if X == 0:
+        break
+    if X <= N:
+        A[K-1-k] = X
+        X = 0
+    else:
+        A[K-1-k] = N
+        X = X - N
+
+for a in A:
+    print(S[a], end='')
+
+print('')
