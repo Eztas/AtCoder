@@ -1,4 +1,16 @@
 S = input()
-L = int(input())
-D = list(map(int,input().split()))
-N, Q = map(int,input().split())
+T = ''
+
+# S_i= # であるとき、またそのときに限り T_i= #
+# T_i=T_j = o (i<j) ならば、 
+# T_i+1,…,T_j−1の中に # が 1 つ以上存在する。
+# oo連続はありえない
+# #は1つ以上
+# 最初から見て、#があれば、その時の可能な範囲で最先端と最後端を
+
+for s in range(len(S)):
+    if S[s] == '#':
+        T += '#'
+    else:
+        T += '.'
+        
