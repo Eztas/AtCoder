@@ -18,7 +18,8 @@ for n in range(N):
 
 sorted_S = sorted(S)
 # f(0, 0), X=1, f(0, 1), X=2, f(0, 2), X=3
-# f(1, 0), X=4
+# f(1, 0), X=4, f(1, 1), X=5
+# でも、0, 2よりも1, 0, 1,1 が優先されることがある
 
 A = [0] * K
 
@@ -39,5 +40,9 @@ print(A)
 
 for a in A:
     print(sorted_S[a], end='')
+print('')
+for s1 in sorted_S:
+    for s2 in sorted_S:
+        print(s1+s2)
 
 print('')
