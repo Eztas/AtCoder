@@ -1,3 +1,4 @@
+import numpy as np
 N, K, X = map(int,input().split())
 
 # N^K = 10^5
@@ -20,29 +21,15 @@ sorted_S = sorted(S)
 # f(0, 0), X=1, f(0, 1), X=2, f(0, 2), X=3
 # f(1, 0), X=4, f(1, 1), X=5
 # でも、0, 2よりも1, 0, 1,1 が優先されることがある
+# 2進数みたいにすればいける
 
 A = [0] * K
 
-N = N - 1
-
+str_X = list(str(np.base_repr(X, N)).zfill(K))
 for k in range(K):
-    if X == 0:
-        break
-    if X <= N:
-        A[K-1-k] = X
-        X = 0
-    else:
-        A[K-1-k] = N
-        X = X - N
-
-print(sorted_S)
-print(A)
+    A[k] = int(str_X[K-1-k])
 
 for a in A:
     print(sorted_S[a], end='')
-print('')
-for s1 in sorted_S:
-    for s2 in sorted_S:
-        print(s1+s2)
 
 print('')
