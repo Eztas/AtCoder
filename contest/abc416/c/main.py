@@ -34,7 +34,10 @@ for k in range(K):
         A[K-1-k] = N
         X = X - N
 
+print(sorted_S)
+print(A)
+
 for a in A:
-    print(S[a], end='')
+    print(sorted_S[a], end='')
 
 print('')
