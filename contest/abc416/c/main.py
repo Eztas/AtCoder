@@ -17,18 +17,18 @@ sorted_S = sorted(S)
 A = [0] * K
 
 str_X = ""
-if N == 1:
-    for _ in range(X):
-        str_X += "1"
-    str_X = list(str_X.zfill(K))
-else:
-    X = X - 1
+X = X - 1
+if N == 1: # N==1なら、どの番目でも同じ文字をKだけ繰り返したものしかない
+    for _ in range(K):
+        print(sorted_S[0], end='')
+
+else: # N >= 2
     str_X = list(str(np.base_repr(X, N)).zfill(K))
     
-for k in range(K):
-    A[k] = int(str_X[k])
+    for k in range(K):
+        A[k] = int(str_X[k])
 
-for a in A:
-    print(sorted_S[a], end='')
+    for a in A:
+        print(sorted_S[a], end='')
 
 print('')
