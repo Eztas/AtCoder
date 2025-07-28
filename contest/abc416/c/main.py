@@ -15,9 +15,16 @@ for n in range(N):
 
 sorted_S = sorted(S)
 A = [0] * K
-X = X - 1
 
-str_X = list(str(np.base_repr(X, N)).zfill(K))
+str_X = ""
+if N == 1:
+    for _ in range(X):
+        str_X += "1"
+    str_X = list(str_X.zfill(K))
+else:
+    X = X - 1
+    str_X = list(str(np.base_repr(X, N)).zfill(K))
+    
 for k in range(K):
     A[k] = int(str_X[k])
 
