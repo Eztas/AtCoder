@@ -2,6 +2,12 @@
 
 [応用1](./../contest/abc410/e/main.py)
 
+2値のみで動的計画法を行う場合もある
+
+↓
+
+[応用2](./../contest/abc415/c/main.py)
+
 # 貪欲法
 
 [基礎1](./../contest/abc412/c/main.py)
