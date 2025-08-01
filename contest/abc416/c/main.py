@@ -1,5 +1,7 @@
 import numpy as np
+import itertools
 N, K, X = map(int,input().split())
+S = [input() for _ in range(N)]
 
 # 解説曰く、計算量的にはそもそも連結させてからでも
 # 計算量は余裕で大丈夫らしい
@@ -23,27 +25,11 @@ N, K, X = map(int,input().split())
 # 生成aiがcmp_to_keyという特殊なソートを提案したがREだし無駄そう
 # やはり連結後にソートするのが無難だし楽
 
-S = []
-for n in range(N):
-    s = input()
-    S.append(s)
+# SからK個選ぶすべての組み合わせ（重複あり）を生成
+S_K_products = itertools.product(S, repeat=K)
 
-sorted_S = sorted(S)
-A = [0] * K
+connectedStrings = [''.join(S_K_product) for S_K_product in S_K_products]
 
-str_X = ""
-X = X - 1
-if N == 1: # N==1なら、どの番目でも同じ文字をKだけ繰り返したものしかない
-    for _ in range(K):
-        print(sorted_S[0], end='')
+connectedStrings.sort()
 
-else: # N >= 2
-    str_X = list(str(np.base_repr(X, N)).zfill(K))
-    
-    for k in range(K):
-        A[k] = int(str_X[k])
-
-    for a in A:
-        print(sorted_S[a], end='')
-
-print('')
+print(connectedStrings[X-1])
