@@ -1,4 +1,7 @@
+N, A, B = map(int,input().split())
 S = input()
-L = int(input())
-D = list(map(int,input().split()))
-N, Q = map(int,input().split())
+
+if B == 0:
+    print(S[A:])
+else:
+    print(S[A:-B])
