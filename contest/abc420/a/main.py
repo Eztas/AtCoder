@@ -1,4 +1,6 @@
-S = input()
-L = int(input())
-D = list(map(int,input().split()))
-N, Q = map(int,input().split())
+X, Y = map(int,input().split())
+
+if (X + Y) % 12 == 0:
+    print(12)
+else:
+    print((X + Y) % 12)
