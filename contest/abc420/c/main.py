@@ -14,9 +14,6 @@ for q in range(Q):
 
     total -= min(A[X - 1], B[X - 1])
 
-    a = A[X - 1]
-    b = B[X - 1]
-
     if c == 'A':
         A[X - 1] = V
     else:
