@@ -20,10 +20,10 @@ top_s = S[0]
 odd_S = S[0::2]
 even_S = S[1::2]
 
-print(S)
+#print(S)
 
 while True:
-    if pos == 2*N - 1:
+    if another_letter_index == 2*N - 1:
         break
     if S[pos] == top_s:
         pos += 1
@@ -36,7 +36,7 @@ while True:
         else:
             count += pos - another_letter_index # 交換回数(移動回数)
             S = S[0:another_letter_index] + S[pos] + S[another_letter_index:pos] + S[pos+1:]
-            print(S)
+            #print(S)
             top_s = S[another_letter_index]
             another_letter_index += 1
             pos = another_letter_index
