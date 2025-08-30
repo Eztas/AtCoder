@@ -10,13 +10,32 @@ S = input()
 # 方法2, リスト半分(奇数番目, 偶数番目)
 # 奇数番目は全部同じにしたい, 偶数ばんめも同じ
 
+# AAABABABBBABABBABABABABBAAABABABBA
+# ABAAABABBBABABBABABABABBAAABABABBA
+
 another_letter_index = 1
 count = 0
+pos = 0
 top_s = S[0]
 odd_S = S[0::2]
 even_S = S[1::2]
 
-for i in range(1, 2*N):
-    if S[i] == S[0]:
+while True:
+    if pos == 2*N - 1:
+        break
+    if S[pos] == top_s:
+        pos += 1
         continue
     else: # S[i] != S[0]
+        if pos == another_letter_index:
+            top_s = S[another_letter_index]
+            another_letter_index += 1
+            pos += 1
+        else:
+            count += pos - another_letter_index # 交換回数(移動回数)
+            S = S[0:another_letter_index] + S[pos] + S[another_letter_index:pos] + S[pos+1:]
+            top_s = S[another_letter_index] 
+            another_letter_index += 1
+            pos += 1
+
+print(count)
