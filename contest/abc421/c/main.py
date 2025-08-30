@@ -20,25 +20,16 @@ top_s = S[0]
 odd_S = S[0::2]
 even_S = S[1::2]
 
-#print(S)
+index1_list = []
+# 今のBの位置のリスト
+# これらを全部1, 3, 5の変化できればいい
+for n in range(2*N):
+    if top_s == S[n]:
+        index1_list.append(n)
 
-while True:
-    if another_letter_index == 2*N - 1:
-        break
-    if S[pos] == top_s:
-        pos += 1
-        continue
-    else: # S[i] != S[0]
-        if pos == another_letter_index: # ABABAB…がつづき時の対応
-            top_s = S[another_letter_index]
-            another_letter_index += 1
-            pos += 1
-        else:
-            count += pos - another_letter_index # 交換回数(移動回数)
-            S = S[0:another_letter_index] + S[pos] + S[another_letter_index:pos] + S[pos+1:]
-            #print(S)
-            top_s = S[another_letter_index]
-            another_letter_index += 1
-            pos = another_letter_index
+idx = 0
+for n in range(1, 2*N, 2):
+    count += abs(index1_list[idx] - n)
+    idx += 1
 
 print(count)
