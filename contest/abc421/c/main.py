@@ -14,21 +14,12 @@ S = input()
 countab = 0
 countba = 0
 
-indexA = []
-# 今のBの位置のリスト
-# これらを全部1, 3, 5の変化できればいい
-for n in range(2*N):
-    if S[n] == 'A':
-        indexA.append(n)
+# if文を使えばより簡略に、しかも配列の中でenumerateは使える
+indexA = [i for i, char in enumerate(S) if char == 'A']
 
-idx = 0
-for n in range(0, 2*N, 2):
-    countab += abs(indexA[idx] - n)
-    idx += 1
-
-idx = 0
-for n in range(1, 2*N, 2):
-    countba += abs(indexA[idx] - n)
-    idx += 1
+# これで0, 1-> 2, 3 -> 4, 5で計算できる
+for i in range(N):
+    countab += abs(indexA[i] - 2 * i)
+    countba += abs(indexA[i] - (2 * i + 1))
 
 print(min(countab, countba))
