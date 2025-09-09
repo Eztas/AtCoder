@@ -3,33 +3,32 @@ S = input()
 
 # 実際に移動させる必要はない
 
-# 方法1
-# A始動ならBの移動回数を記せば良い
-# S="AAABABBB", ならS[3] = Bの時、S[1]まで移動させる回数だけ書く
-# 結局2N回検索が必要, 別にN^2じゃないから大丈夫だ
-# 方法2, リスト半分(奇数番目, 偶数番目)
-# 奇数番目は全部同じにしたい, 偶数ばんめも同じ
+# 解説
+# 計算量的に一度にABABのパターンとBABAのパターン両方を調べる余裕がある
+# そのうち最小を持ってくればいい
+# この場合、A持ってきて、次はBとかをやらなくても、
+# Aだけを持ってくるパターンさえ計算すれば解決
+# 2*5*10^5 *2=2*10^6しかないから成り立つ
+# AB, BAのパターンのAの正解のインデックスと実際のインデックスの差分合計を計算
 
-# AAABABABBBABABBABABABABBAAABABABBA
-# ABAAABABBBABABBABABABABBAAABABABBA
+countab = 0
+countba = 0
 
-another_letter_index = 1
-count = 0
-pos = 0
-top_s = S[0]
-odd_S = S[0::2]
-even_S = S[1::2]
-
-index1_list = []
+indexA = []
 # 今のBの位置のリスト
 # これらを全部1, 3, 5の変化できればいい
 for n in range(2*N):
-    if top_s == S[n]:
-        index1_list.append(n)
+    if S[n] == 'A':
+        indexA.append(n)
+
+idx = 0
+for n in range(0, 2*N, 2):
+    countab += abs(indexA[idx] - n)
+    idx += 1
 
 idx = 0
 for n in range(1, 2*N, 2):
-    count += abs(index1_list[idx] - n)
+    countba += abs(indexA[idx] - n)
     idx += 1
 
-print(count)
+print(min(countab, countba))
