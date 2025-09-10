@@ -1,5 +1,8 @@
 from collections import deque
 
+# キューと4方向ごとのコストを調べるだけでbfsの計算は完成する
+# 移動コストが全て同じ時にbfsは大活躍する
+# 今回みたいな床もif文として加えたりするだけでよく、融通も効く
 H, W = map(int,input().split())
 
 A = []
@@ -32,6 +35,7 @@ dw = [0, 0, -1, 1]
 # 4. 2で特殊な床に対応できるようにしつつ、(特殊な床OFF, ONの2値)
 # d: 迷路の各地点までの最短経路のコスト（距離）を記録するための3次元リスト
 # q: 探索すべき次の地点の候補を順番に格納する
+# 3次元なのは状態があるから、なければ2次元で十分
 d = [[[INF] * W for _ in range(H)] for _ in range(2)]
 q = deque()
 q.append((0, sh, sw))
@@ -39,8 +43,10 @@ d[0][sh][sw] = 0 # 最初のスタート、特殊な床の影響もないので0
 
 while q:
     c, h, w = q.popleft() # 探索すべき地点
+    # 上下左右それぞれでコスト計算
     for k in range(4):
-        hh, ww = h + dh[k], h + dw[k]
+        hh, ww = h + dh[k], w + dw[k]
+        # 障害物の時はこの計算はスルー
         if (
             not (0 <= hh < H and 0 <= ww < W)
             or A[hh][ww] == "#"
@@ -48,10 +54,15 @@ while q:
             or (c == 1 and A[hh][ww] == "o")
         ):
             continue
+        # ドア管理
         cc = c ^ (A[hh][ww] == "?")
+        # d[cc][hh][ww] == INFなら訪れてない
+        # = その地点のコストdを計算する必要がある
+        # BFSは距離が短い順に探索するため、ある地点に最初にたどり着いたルートが、必ずその地点への最短経路
+        # 上下左右1回の移動コストがすべて同じだから成り立つ
         if d[cc][hh][ww] != INF:
             continue
         q.append((cc, hh, ww))
         d[cc][hh][ww] = d[c][h][w] + 1 # 現在のセルまでにたどり着くコスト, 今のセル+1コスト
-ans = min(d[0][gh][gw], d[1][gh][gw])
+ans = min(d[0][gh][gw], d[1][gh][gw]) #ゴールに辿り着く時に状態0と1の2パターンがあるので、その最小
 print(-1 if ans == INF else ans)
