@@ -30,6 +30,12 @@
 
 [結果1](./../contest/abc411/c/main.py)
 
+# 幅優先×迷路
+
+[例1](https://atcoder.jp/contests/abc420/tasks/abc420_d)
+
+[結果1](./../contest/abc420/d/main.py)
+
 # いずれ解けそう(何となくはわかるが、今はまだ言語化できない)
 
 [abc411-D-Conflict2](https://atcoder.jp/contests/abc411/tasks/abc411_d)
