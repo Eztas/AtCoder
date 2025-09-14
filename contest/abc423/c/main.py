@@ -19,15 +19,25 @@ L = list(map(int,input().split()))
 # Lの操作は全く不要
 # ドア i は部屋 i−1 と部屋 i を
 # ドア i は部屋 i と部屋 i+1として解釈 
+# 計算はできるが分岐が多すぎる
+
+# 0  1  2. 3.   … N - 1.     N
+#.  0  1. 2. 3. ….     N - 1
 count = 0
 
 head = 0
+tail = 0
 for n in range(N):
     if L[n] == 0:
         head = n
         break
 
-for i in range(head, R):
+for n in range(N):
+    if L[N - n - 1] == 1:
+        tail = N - n - 1
+        break
+
+for i in range(head, R+1):
     if L[n] == 1:
         count += 1
 
@@ -36,5 +46,7 @@ count += R - head # 通ったところ全てに鍵をかける
 for i in range(R, N):
     if L[n] == 0:
         count += 1
+    else: # 1ならまず開けてから閉めないといけない
+        count += 2
 
 print(count)
