@@ -46,8 +46,8 @@ for n in range(N):
         allLocked = False
         break
 
-if allLocked:
-    print(2*len(L))
+if allLocked: # 全て閉まっていればそもそも閉めなくていい
+    print(0)
 
 elif head > R:
     for j in range(R, tail+1):
