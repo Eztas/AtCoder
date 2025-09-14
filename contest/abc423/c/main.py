@@ -29,49 +29,15 @@ L = list(map(int,input().split()))
 
 # AI曰く全部のドアが閉まっている時の処理がない
 
-count = 0
+idx0 = [i for i,l in enumerate(L) if l==0]
 
-head = 0
-tail = 0
-allLocked = True
-for n in range(N):
-    if L[n] == 0:
-        head = n
-        allLocked = False
-        break
+# 0がない=全て閉まっている, 開閉しなくても終わってるから0
+if len(idx0) == 0:
+  print(0)
+  exit()
 
-for n in range(N):
-    if L[N - n - 1] == 0:
-        tail = N - n - 1
-        allLocked = False
-        break
-
-if allLocked: # 全て閉まっていればそもそも閉めなくていい
-    print(0)
-
-elif head > R:
-    for j in range(R, tail+1):
-        if L[j] == 0:
-            count += 1
-        else: # 1ならまず開けてから閉めないといけない
-            count += 2
-
-    print(count)
-
-elif tail < R:
-    for j in range(head, R):
-        if L[j] == 0:
-            count += 1
-        else: # 1ならまず開けてから閉めないといけない
-            count += 2
-
-    print(count)
-
-else:
-    for j in range(head, tail+1):
-        if L[j] == 0:
-            count += 1
-        else: # 1ならまず開けてから閉めないといけない
-            count += 2
-
-    print(count)
+head = min(R,idx0[0])
+tail = max(R,idx0[-1]+1) # 末尾の値も含めるためのR
+print(sum(L[head:tail])+(tail-head))
+# 1がしまっている時は開ける動作をして、0の時はスルー
+# 海兵の合計はsumで再現できる
