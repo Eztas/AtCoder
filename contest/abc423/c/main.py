@@ -27,7 +27,8 @@ L = list(map(int,input().split()))
 # head, R, tailはこれでOK
 # R, head, tailなら
 
-count = 0
+head_count = 0
+tail_count = 0
 
 head = 0
 tail = 0
@@ -41,35 +42,28 @@ for n in range(N):
         tail = N - n - 1
         break
 
-if R < head:
-    for i in range(R, tail):
-        if L[i] == 0:
-            count += 1
-        else:
-            count += 2
+for i in range(head, R):
+    if L[i] == 1:
+        head_count += 1
 
-    print(count)
+head_count += R - head # 通ったところ全てに鍵をかける
 
-elif R > tail:
-    for i in range(head, R):
-        if L[i] == 0:
-            count += 1
-        else:
-            count += 2
+for j in range(R, tail+1):
+    if L[j] == 0:
+        head_count += 1
+    else: # 1ならまず開けてから閉めないといけない
+        head_count += 2
 
-    print(count)
+for i in range(R, tail+1):
+    if L[i] == 1:
+        tail_count += 1
 
-else:
-    for i in range(head, R):
-        if L[i] == 1:
-            count += 1
+tail_count += tail+1 - R # 通ったところ全てに鍵をかける
 
-    count += R - head # 通ったところ全てに鍵をかける
+for j in range(head, R):
+    if L[j] == 0:
+        tail_count += 1
+    else: # 1ならまず開けてから閉めないといけない
+        tail_count += 2
 
-    for j in range(R, tail+1):
-        if L[j] == 0:
-            count += 1
-        else: # 1ならまず開けてから閉めないといけない
-            count += 2
-
-    print(count)
+print(min(head_count, tail_count))
