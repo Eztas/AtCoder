@@ -27,21 +27,29 @@ L = list(map(int,input().split()))
 # head, R, tailはこれでOK
 # R, head, tailなら
 
+# AI曰く全部のドアが閉まっている時の処理がない
+
 count = 0
 
 head = 0
 tail = 0
+allLocked = True
 for n in range(N):
     if L[n] == 0:
         head = n
+        allLocked = False
         break
 
 for n in range(N):
     if L[N - n - 1] == 0:
         tail = N - n - 1
+        allLocked = False
         break
 
-if head > R:
+if allLocked:
+    print(2*len(L))
+
+elif head > R:
     for j in range(R, tail+1):
         if L[j] == 0:
             count += 1
