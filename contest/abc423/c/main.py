@@ -33,18 +33,18 @@ for n in range(N):
         break
 
 for n in range(N):
-    if L[N - n - 1] == 1:
+    if L[N - n - 1] == 0:
         tail = N - n - 1
         break
 
-for i in range(head, R+1):
-    if L[n] == 1:
+for i in range(head, R):
+    if L[i] == 1:
         count += 1
 
 count += R - head # 通ったところ全てに鍵をかける
 
-for i in range(R, N):
-    if L[n] == 0:
+for j in range(R, tail+1):
+    if L[j] == 0:
         count += 1
     else: # 1ならまず開けてから閉めないといけない
         count += 2
