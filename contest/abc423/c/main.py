@@ -1,4 +1,40 @@
-S = input()
-L = int(input())
-D = list(map(int,input().split()))
-N, Q = map(int,input().split())
+# B問題に開閉捜査がついて, 計算量も増加
+# 全てに鍵をかける, Rからスタートなどの違い
+
+N, R = map(int,input().split())
+L = list(map(int,input().split()))
+
+#部屋 i−1 または部屋iにいるときに限り、ドアiの鍵に対して開閉操作を行うことができます。
+# ドア iの鍵に対して開閉操作を行ったとき、その鍵が開いているときは閉まり、閉まっているときは開きます
+# 開閉は必ずではない
+
+# 右からやろうが左からやろうが変わらないとまず仮定
+# この前の左からのパターンと右からのパターンの最小値を計算する余裕はあるかも
+# 1 0 0 1 0 0
+# 1 1 0 1 0 0
+
+# まず一番左の0に移動する
+# その0を1にする必要があるが, そこに辿り着くまでに1があれば全部まず0
+
+# Lの操作は全く不要
+# ドア i は部屋 i−1 と部屋 i を
+# ドア i は部屋 i と部屋 i+1として解釈 
+count = 0
+
+head = 0
+for n in range(N):
+    if L[n] == 0:
+        head = n
+        break
+
+for i in range(head, R):
+    if L[n] == 1:
+        count += 1
+
+count += R - head # 通ったところ全てに鍵をかける
+
+for i in range(R, N):
+    if L[n] == 0:
+        count += 1
+
+print(count)
