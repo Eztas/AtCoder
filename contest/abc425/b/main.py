@@ -8,12 +8,14 @@ A = list(map(int,input().split())) # -1 or 1<=a<=N
 # 基本-1以外の数字で重複があればNo
 
 def has_duplicates(seq):
+    plus_seq = []
     for s in seq:
-        if s == -1:
-            seq.remove(s)
-    if len(seq) == 0:
-        return True
-    return len(seq) != len(set(seq))
+        if s != -1:
+            plus_seq.append(s)
+    
+    if len(plus_seq) == 0:
+        return False
+    return len(plus_seq) != len(set(plus_seq))
 
 def print_horizontal_line(dataList, endChar):
     for idx, data in enumerate(dataList):
