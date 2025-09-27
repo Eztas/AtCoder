@@ -14,13 +14,13 @@ for q in range(Q):
         head = (head - c) % N
 
     else: # 2の時
-        l = query[1]
-        r = query[2]
+        l = query[1] - 1
+        r = query[2] - 1
 
         if head <= l:
-            print(sum(A[l-head-1:r-head]))
+            print(sum(A[l-head:r-head+1]))
         else:
             if head <= r:
-                print(sum(A[N-head+l-1:r-head]))
+                print(sum(A[head+l:r-head+1]))
             else:
-                print(sum(A[N-head+l-1:N-head+r]))
+                print(sum(A[head+l:head+r+1]))
