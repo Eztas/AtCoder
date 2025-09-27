@@ -11,6 +11,8 @@ def has_duplicates(seq):
     for s in seq:
         if s == -1:
             seq.remove(s)
+    if len(seq) == 0:
+        return True
     return len(seq) != len(set(seq))
 
 def print_horizontal_line(dataList, endChar):
@@ -43,4 +45,3 @@ else:
     print("Yes")
 
     print_horizontal_line(P, ' ')
-    
