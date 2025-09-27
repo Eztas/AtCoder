@@ -21,6 +21,6 @@ for q in range(Q):
             print(sum(A[l-head:r-head+1]))
         else:
             if head <= r:
-                print(sum(A[head+l:r-head+1]))
+                print(sum(A[head+r:N])+sum(A[0:r-head+1]))
             else:
                 print(sum(A[head+l:head+r+1]))
