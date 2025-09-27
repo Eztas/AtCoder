@@ -11,9 +11,16 @@ for q in range(Q):
 
     if query[0] == 1:
         c = query[1]
-        head = (head + c) % N
+        head = (head - c) % N
 
     else: # 2の時
         l = query[1]
         r = query[2]
-        print(sum(A[l-1:r]))
+
+        if head <= l:
+            print(sum(A[l-head-1:r-head]))
+        else:
+            if head <= r:
+                print(sum(A[N-head+l-1:r-head]))
+            else:
+                print(sum(A[N-head+l-1:N-head+r]))
