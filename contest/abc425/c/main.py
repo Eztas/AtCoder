@@ -30,22 +30,26 @@ N, Q = map(int,input().split())
 # 2から5までの和を求めるときは、5までの和-2までの和を求めればいい
 
 A = list(map(int,input().split()))
+B = A + A # まず連結
+# 累積和
+# 累積和には、0もないといけない
+# 1~5の時とかに、0の初項がないと、必ず1が引かれることになる
+for i in range(1, 2 * N): 
+    B[i] = B[i-1] + B[i]
+B = [0] + B
 head = 0
 for q in range(Q):
     query = list(map(int,input().split()))
 
     if query[0] == 1:
         c = query[1]
-        head = (head - c) % N
+        head = (head + c) % N # N+1以降はまた0に戻るから
 
     else: # 2の時
         l = query[1] - 1
         r = query[2] - 1
 
-        if head <= l:
-            print(sum(A[l-head:r-head+1]))
-        else:
-            if head <= r:
-                print(sum(A[head+l:N])+sum(A[head:r-head+1]))
-            else:
-                print(sum(A[head+l:head+r+1]))
+        l = l + head
+        r = r + head
+
+        print(B[r+1] - B[l])
