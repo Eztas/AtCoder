@@ -44,6 +44,8 @@
 
 [abc417-C-Distance Indicators](https://atcoder.jp/contests/abc417/tasks/abc417_c)
 
+[abc425-C-Rotate and Sum Query](https://atcoder.jp/contests/abc425/tasks/abc425_c)
+
 # 個人的悔しい
 
 [abc423-C-Lock All Doors](https://atcoder.jp/contests/abc423/tasks/abc423_c)
