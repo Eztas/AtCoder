@@ -1,9 +1,7 @@
 import heapq
 from collections import deque
-N = int(input())
-K = int(input())
+N, K = map(int,input().split())
 
-k = 0
 # 最大0~Aまでの長さのリストがそれぞれ人数を格納していれば良い
 # 格納する時にN*latestTimeの時間量になる
 
@@ -23,16 +21,39 @@ k = 0
 # -> 優先度付きキューを用いる, 順序関係なく最小値をpopできる
 # 最小値だから退店時間が早いものを取り出せる
 
-A = []
-B = []
-C = []
-currentTime = 0
+# 入店時間さえ取得できればいい
+# n番目に擬似的にデータの挿入とかしてしまって検証するものあり(?)
+# こういうややこしいやつはまずイベントとデータ構造で考える
+# イベントは2種類
+# 到着(到着時に、入店タイムの計算を行うからイベント自体は到着のみ) 
+# 退店(客数が減る)
+# 扱いたいデータ構造2種類
+# 待ち行列(店外)と店内の客(店内)
+# forループでは各客の入店時間を格納することを軸に行う
+# forループ一回ごとに入店が済んでいるわけではないので注意
+
+canEnterTime = 0
 currentCustomers = 0
+goOutCustomers = []
+waitingCustomers = deque()
+
 for n in range(N):
     a, b, c = map(int,input().split())
-    A.append(a)
-    B.append(b)
-    C.append(c)
+    # 現在の時間, 0 or 最初なら最初の人の入店からでいい
 
-for n in range(N):
+    # 現在の時間までに退出する人がいたら対処
+    enterTime = 0
+    canEnterTime = a # まだ暫定
 
+    # 今の人数とこれから入る人数がK以上の時だけpopする作業をする
+    # 普通に入れるなら何もせずに入る
+    # 同じ時間に重複してても、1回だしてKに収まるなら次に外せばいい
+    # 同じ退店時間の人が複数いるときは一度に取り出して、なんてことはいらない
+    while (currentCustomers + c > K):
+        goOutCustomer = heapq.heappop(goOutCustomers)
+        canEnterTime = goOutCustomer[0] # 退店してから入る方が早いならそっちになる
+        currentCustomers -= goOutCustomer[1]
+    
+    print(canEnterTime)
+    heapq.heappush(goOutCustomers, (canEnterTime+b, c)) # B時間後に出るからcanEnterTimeと足す
+    currentCustomers += c # 今店にいる人数
