@@ -27,23 +27,21 @@ N, K = map(int,input().split())
 # イベントは2種類
 # 到着(到着時に、入店タイムの計算を行うからイベント自体は到着のみ) 
 # 退店(客数が減る)
-# 扱いたいデータ構造2種類
-# 待ち行列(店外)と店内の客(店内)
+# 扱いたいデータ構造1 種類
+# 店内の客(店内)
 # forループでは各客の入店時間を格納することを軸に行う
 # forループ一回ごとに入店が済んでいるわけではないので注意
 
 canEnterTime = 0
 currentCustomers = 0
 goOutCustomers = []
-waitingCustomers = deque()
 
 for n in range(N):
     a, b, c = map(int,input().split())
-    # 現在の時間, 0 or 最初なら最初の人の入店からでいい
-
-    # 現在の時間までに退出する人がいたら対処
-    enterTime = 0
-    canEnterTime = a # まだ暫定
+    # まだ暫定
+    # 前の客の入店時刻(last_enter_time)と自分の到着時刻(a)のうち、遅い方からスタート
+    # 待ち行列というルールをこれで守らせる
+    canEnterTime = max(canEnterTime, a) 
 
     # 今の人数とこれから入る人数がK以上の時だけpopする作業をする
     # 普通に入れるなら何もせずに入る
@@ -51,7 +49,9 @@ for n in range(N):
     # 同じ退店時間の人が複数いるときは一度に取り出して、なんてことはいらない
     while (currentCustomers + c > K):
         goOutCustomer = heapq.heappop(goOutCustomers)
-        canEnterTime = goOutCustomer[0] # 退店してから入る方が早いならそっちになる
+        # 待ち行列に着く時間の方が遅いなら、そっちになるようにしないと
+        # 待ち時間よりも早く入店することになる
+        canEnterTime = max(canEnterTime, goOutCustomer[0]) 
         currentCustomers -= goOutCustomer[1]
     
     print(canEnterTime)
