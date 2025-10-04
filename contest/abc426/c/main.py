@@ -1,3 +1,4 @@
+from collections import deque
 N, Q = map(int,input().split())
 
 # N台のPC
@@ -7,23 +8,20 @@ N, Q = map(int,input().split())
 # 12345
 # 44345
 # やはり代入が良くないが、規則性もなく代入以外の管理がない
-minVer = 1
+# 6->4<-8, みたいなアップグレードごとに、中央が最小値という性質になりやすい
+# countは絶対X以下になる
 
+# PC = deque([n+1 for n in range(N)])
 PC = [n+1 for n in range(N)]
-
+# PC[X]でカウントを出せるようにする
+minVer = 0
 for q in range(Q):
     X, Y = map(int,input().split())
-    count = 0
 
     if minVer <= X:
-        for i in range(X):
-            if PC[i] <= X:
-                PC[i] = Y
-                count += 1
-            else:
-                break
-        minVer = X + 1
-        PC.sort()
-
-    print(count)
+        print(PC[X-1] - minVer)
+        minVer = X
+        PC[Y-1] += PC[X-1] - minVer
+    else:
+        print(0)
     
