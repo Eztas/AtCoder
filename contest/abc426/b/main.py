@@ -1,4 +1,9 @@
 S = input()
-L = int(input())
-D = list(map(int,input().split()))
-N, Q = map(int,input().split())
+
+S_sorted = sorted(S)
+
+if S_sorted[0] == S_sorted[1]:
+    print(S_sorted[-1])
+else:
+    print(S_sorted[0])
+    
