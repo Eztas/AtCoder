@@ -36,6 +36,16 @@
 
 [結果1](./../contest/abc420/d/main.py)
 
+# 毎度降順に並べながら、その値の個数とかも管理しつつ計算したい(heapq)
+
+[例1](https://atcoder.jp/contests/abc423/tasks/abc423_d)
+
+[結果1](./../contest/abc423/d/main.py)
+
+[例2](https://atcoder.jp/contests/abc426/tasks/abc426_c)
+
+[結果2](./../contest/abc426/c/main.py)
+
 # いずれ解けそう(何となくはわかるが、今はまだ言語化できない)
 
 [abc411-D-Conflict2](https://atcoder.jp/contests/abc411/tasks/abc411_d)
