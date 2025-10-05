@@ -1,85 +1,34 @@
-import sys
+import heapq
+N, Q = map(int,input().split())
 
-# 再帰呼び出しの上限を、制約N, Qより大きい値に設定
-# これをしないと、データのサイズが大きい場合に再帰が深くなりすぎてエラーになることがあります
-sys.setrecursionlimit(2 * 10**6)
+# N台のPC
+# 最初はバージョン1~NのN種類のバージョンのPC
+# Xを含むX以前のPCのバージョンをYにする
+# あくまでアップグレードだから、Yが今のものよりも古ければ何もしない
+# 12345
+# 44345
+# やはり代入が良くないが、規則性もなく代入以外の管理がない
 
-# 高速な入力を受け取るためのおまじない
-input = sys.stdin.readline
+# 最小の要素を取る、heapqが使えるらしい
+# ちょっとは過ったが、無意味だと思ってた
 
-def main():
-    """
-    メインの処理を行う関数
-    """
-    N, Q = map(int, input().split())
+# O(NQ)がO((N+Q)logN)で済む
 
-    # --- Union-Find木と関連データの初期化 ---
-    # 各データは1からNまでのバージョン番号をそのままインデックスとして使えるように、
-    # N+2のサイズで作成します (N+1は番兵として使います)
+PC = []
+for n in range(N):
+    heapq.heappush(PC, (n+1, 1)) # 単にPCのバージョンだけでなく、個数も記録
 
-    # parent[i]: バージョンiが属するグループの親(代表)
-    parent = list(range(N + 2))
-    
-    # count[i]: バージョンiが代表であるグループに属するPCの台数
-    # 最初は各バージョンに1台ずつPCがあるので、全て1で初期化
-    count = [1] * (N + 2)
-    count[N + 1] = 0 # 番兵のPC台数は0
+for q in range(Q):
+    X, Y = map(int,input().split())
+    count = 0
 
-    # --- find操作 (経路圧縮あり) ---
-    # バージョンxが最終的にどのグループに属するか(代表は何か)を返す
-    def find(x):
-        if parent[x] == x:
-            return x
-        # 親をたどる過程で、親を根に直接つなぎ替える(経路圧縮)ことで次回以降の検索を高速化
-        parent[x] = find(parent[x])
-        return parent[x]
+    while(PC):
+        if PC[0][0] > X:
+            break
+        count += PC[0][1] #  最小値の確認は O(1)
+        heapq.heappop(PC) # # 取り出しは 最大でO(logN)
+    if count > 0:
+        heapq.heappush(PC, (Y, count)) # 優先付きだから勝手にソートしてくれる(ちゃんと順番通りにしてくれる)
 
-    # --- ジャンプのためのデータと関数 ---
-    
-    # next_version[i]: バージョンi以上の、まだ処理されていない最小のバージョン
-    # 最初は自分自身を指す
-    next_version = list(range(N + 2))
-
-    # find_next(x): バージョンx以上の未処理バージョンを高速に見つける
-    # find関数と構造は同じで、経路圧縮も行う
-    def find_next(x):
-        if next_version[x] == x:
-            return x
-        next_version[x] = find_next(next_version[x])
-        return next_version[x]
-
-    # --- Q回のクエリ処理 ---
-    for _ in range(Q):
-        X, Y = map(int, input().split())
-
-        upgraded_count = 0
-        root_Y = find(Y) # アップグレード先のバージョンYが属するグループの代表
-
-        # curは、X以下の未処理バージョンをジャンプしながら進む変数
-        # まずは1以上の最初の未処理バージョンからスタート
-        cur = find_next(1)
-
-        while cur <= X:
-            root_cur = find(cur)
-
-            # curとYがまだ同じグループでなければ、統合処理を行う
-            if root_cur != root_Y:
-                # アップグレード台数を加算
-                upgraded_count += count[root_cur]
-                
-                # Yのグループに統合する
-                count[root_Y] += count[root_cur]
-                parent[root_cur] = root_Y
-            
-            # バージョンcurの処理が終わったので、ジャンプ先を更新する
-            # 次にcurを探しに来たときは、cur+1以降の未処理バージョンに飛ぶようにする
-            next_version[cur] = find_next(cur + 1)
-            
-            # 次の未処理バージョンへジャンプ！
-            cur = find_next(cur)
-
-        print(upgraded_count)
-
-if __name__ == "__main__":
-    main()
+    print(count)
     
