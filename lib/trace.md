@@ -44,7 +44,7 @@
 
 [例2](https://atcoder.jp/contests/abc426/tasks/abc426_c)
 
-[結果1](./../contest/abc426/c/main.py)
+[結果2](./../contest/abc426/c/main.py)
 
 # いずれ解けそう(何となくはわかるが、今はまだ言語化できない)
 
