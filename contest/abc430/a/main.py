@@ -1,4 +1,6 @@
-S = input()
-L = int(input())
-D = list(map(int,input().split()))
-N, Q = map(int,input().split())
+A, B, C, D = map(int,input().split())
+if C >= A and D < B:
+    print("Yes")
+else:
+    print("No")
+    
