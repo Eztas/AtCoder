@@ -46,6 +46,12 @@
 
 [結果2](./../contest/abc426/c/main.py)
 
+# 重複の計算に困ったらset
+
+[例1](https://atcoder.jp/contests/abc430/tasks/abc430_b)
+
+[結果1](./../contest/abc430/b/main.py)
+
 # いずれ解けそう(何となくはわかるが、今はまだ言語化できない)
 
 [abc411-D-Conflict2](https://atcoder.jp/contests/abc411/tasks/abc411_d)
@@ -59,3 +65,5 @@
 # 個人的悔しい
 
 [abc423-C-Lock All Doors](https://atcoder.jp/contests/abc423/tasks/abc423_c)
+
+[abc430-B-Count Subgrid](https://atcoder.jp/contests/abc430/tasks/abc430_b)
