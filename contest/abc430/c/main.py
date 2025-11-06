@@ -8,17 +8,19 @@ ab_counts = []
 
 def count_a(l, r):
     if l > r: return 0
-    return ab_counts[r][0] - ab_counts[l][0]
+    return ab_counts[r+1][0] - ab_counts[l][0]
 
 def count_b(l, r):
     if l > r: return 0
-    return ab_counts[r][1] - ab_counts[l][1]
+    return ab_counts[r+1][1] - ab_counts[l][1]
 
 if len(set(S)) == 1:
     if S[0] == 'b':
         print(0)
         exit()
 
+# 累積和はN+1個必要
+ab_counts.append([0, 0])
 for n in range(N):
     if S[n] == 'a':
         a_count += 1
