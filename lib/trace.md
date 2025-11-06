@@ -12,6 +12,10 @@
 
 [基礎1](./../contest/abc412/c/main.py)
 
+# 尺取法
+
+[基礎1](./../contest/abc430/c/main.py)
+
 # 1 つの入力ファイルにおける N の総和は 2×10^5(その他任意の数)以下
 
 [例1](https://atcoder.jp/contests/abc412/tasks/abc412_c)
