@@ -10,7 +10,7 @@ S = input()
 
 # a, b, cに対応した配列
 alphas_idx = [[] for _ in range(26)]
-alphas_accum_idx = []
+alphas_sub_idx = []
 # 0なら更新
 # 1以上なら、差分行列のみを保存
 
@@ -18,10 +18,12 @@ for idx, s in enumerate(S):
     alphas_idx[ord(s) - 97].append(idx)
 
 for idx in alphas_idx:
-    alphas_accum_idx.append(list(itertools.accumulate(idx)))
+    alphas_sub_idx.append([(idx[id+1]-idx[id]) for id in range(len(idx)-1)])
 
 for id in alphas_idx:
     print(id)
 
-for id in alphas_accum_idx:
+for id in alphas_sub_idx:
     print(id)
+
+count = 0
