@@ -34,6 +34,13 @@
 
 [結果1](./../contest/abc411/c/main.py)
 
+## 個数を数えてから差分系
+
+[例1](https://atcoder.jp/contests/abc449/tasks/abc449_c)
+
+[結果1](./../contest/abc449/c/main.py)
+
+
 # 幅優先×迷路
 
 [例1](https://atcoder.jp/contests/abc420/tasks/abc420_d)
