@@ -1,41 +1,22 @@
-import sys
-
-# 大量入力なので高速化
-input = sys.stdin.readline
-
 N, Q = map(int, input().split())
 
-# 各カードの下、上を管理 (1-indexed)
-under = [0] * N
-above = [0] * N
-# 各山の「一番下」と「一番上」のカード
-mountain_bottom = [0] * N
-mountain_top = [0] * N
-# カードが今どの山にあるか (一番下のカードを辿ればわかるようにする)
-# または「どのカードがどの山の底か」を管理
+# 上と下を更新すればどこの山のどこに載せるかの追跡ができる
+# 山の上下と、カードがどの山にあるのかの理解
+# up_i = カード i のすぐ上にあるカード（なければ −1）
+# down_i = カード i のすぐ下にあるカード（なければ −1）
+# 互いの上下を理解していれば、枚数計算も早い？
+mountain_bottom = [for n in range(N)] # 山全体の下
+mountain_top = [for n in range(N)] # 山全体の上
+under = [0] * N # 操作する山の下
+above = [0] * N # 操作する山の上
+mountains = [1] * N
 
-# 操作...
+# 下 = 丸々なくなるか
+
 for _ in range(Q):
     C, P = map(int, input().split())
+    c = C - 1 # index
+    p = P - 1 # index
+    mountain_bottom[]
+    mountain_top = [for n in range(N)]
     
-    # 1. Cの下にあるカードとの接続を切る
-    X = under[C-1]
-    if X != 0:
-        # Cの下にカードがあれば、そのカードが新しい「山の頂上」になる
-        above[X] = 0
-        # ※ Xがどの山の頂上になったか管理が必要
-    else:
-        # Cが底だった場合、その山は空になる処理
-        pass
-
-    # 2. 山Pの頂上にCを繋ぐ
-    Y = mountain_top[P-1]
-    under[C] = Y
-    above[Y] = C
-    
-    # 3. 山の頂上情報を更新
-    # Cのさらに上に乗っている「塊の主」を山Pの新しい頂上にする
-    # ...
-  
-# 最後に各山の枚数
-print_horizontal_line(mountains, ' ')
