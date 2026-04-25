@@ -15,6 +15,7 @@ A = list(map(int,input().split()))
 # dict_items([('a', 4), ('b', 1), ('c', 2)])
 
 set_a = set(A)
+c_a = collections.Counter(A)
 total_A = sum(A)
 min_count = len(set_a) - K
 max_data = 0
@@ -25,10 +26,10 @@ if min_count <= 0:
   print(0)
 
 else:
-  for solo_a in set_a:
+  for solo_a in c_a.keys():
     pop_k = heapq.heappop(k_list)
-    if pop_k < solo_a * A.count(solo_a):
-      heapq.heappush(k_list, solo_a * A.count(solo_a))
+    if pop_k < solo_a * c_a[solo_a]:
+      heapq.heappush(k_list, solo_a * c_a[solo_a])
     else:
       heapq.heappush(k_list, pop_k)
       
