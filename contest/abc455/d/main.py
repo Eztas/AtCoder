@@ -10,13 +10,19 @@ mountain_top = [for n in range(N)] # 山全体の上
 under = [0] * N # 操作する山の下
 above = [0] * N # 操作する山の上
 mountains = [1] * N
+up = [-1] * N
+down = [-1] * N
 
 # 下 = 丸々なくなるか
 
 for _ in range(Q):
-    C, P = map(int, input().split())
-    c = C - 1 # index
-    p = P - 1 # index
-    mountain_bottom[]
-    mountain_top = [for n in range(N)]
+  C, P = map(int, input().split())
+  c = C - 1
+  p = P - 1
+  d = down[c]
+  down[c] = p
+  up[p] = c
+  down[d] = -1 # カードなくなる
     
+for n in range(N):
+  
