@@ -73,6 +73,8 @@
 
 [abc425-C-Rotate and Sum Query](https://atcoder.jp/contests/abc425/tasks/abc425_c)
 
+[abc455-D-Card Pile Query](https://atcoder.jp/contests/abc455/tasks/abc455_d)
+
 # 個人的悔しい
 
 [abc423-C-Lock All Doors](https://atcoder.jp/contests/abc423/tasks/abc423_c)
