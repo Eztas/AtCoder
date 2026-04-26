@@ -123,6 +123,48 @@ Set-Cookie3: REVEL_SESSION="xxx"
 
 16. `acc config default-template python`でデフォルトのテンプレートをpythonに変更
 
+## 設定手順(初期設定, Ver.2, 2026/04/26~)
+
+※ このリポジトリを取り込み済み
+
+1. 「Dev Containers: Reopen in Containers」を選択し、コンテナに接続する
+
+2. 新しいウィンドウが開かれ、それでAtCoderフォルダに移動
+
+3. 開発者ツールを使用して, Application->Cookies->"https://atcoder.jp"
+からREVEL_SESSIONクッキーを取得。
+
+4. ターミナルでacc config-dirを実行し、表示されたディレクトリ内に保存されているsesion.jsonを開く(もしくは新規作成する)。
+
+5. REVEL_SESSION=xxxのxxxの部分に手順1で取得したREVEL_SESSIONクッキーを貼り付けて保存。
+```
+{
+    "cookies": [
+        "REVEL_SESSION=xxx"
+    ]
+}
+```
+
+6. `acc session`で確認, okなら問題ない
+
+7. `acc check-oj`でログインを確認
+
+8. `oj login https://beta.atcoder.jp/`をやる
+
+9. 8はたいていネットワークエラーで無理なので、`oj -h` でcookie.jarファイルのパスを確認し、そのファイルのREVEL_SESSIONも先ほどと同じものを代入
+
+```
+Set-Cookie3: REVEL_SESSION="xxx"
+```
+
+10. /AtCoderディレクトリで、`acc config default-task-choice all`
+
+    これにより、全問題を1回の動作で取得
+
+11. テンプレートはDockerfile経由で自動で登録済み
+
+12. `acc config default-template python`でデフォルトのテンプレートをpythonに変更
+
 ## VSCodeのDev Containersで開く手順
 
 1. もし右下にこれが出てきたらこれを押すだけで良い
@@ -142,13 +184,19 @@ Set-Cookie3: REVEL_SESSION="xxx"
 6. 0 selectedで進む(個人開発ならいらないかも)
   ![alt text](img/optional_files.png)
 
-## 日頃の手順
+## 日頃の手順(WSL)
 
 1. `docker compose start`で開始
 
 2. 「Dev Containers: Attach to Running Container...」を選択し、コンテナへ移動
 
 3. 作業が終われば`docker compose stop`で終了(downだとボリュームのデータが消えるので注意)
+
+## 日頃の手順(Mac)
+
+もし、メモリなどに余裕があればVSCodeを閉じずにそのままでOK
+
+(再起動に注意)
 
 ## 問題の追加
 
