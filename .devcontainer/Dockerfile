@@ -28,11 +28,11 @@ RUN npm install -g atcoder-cli
 
 # atcoder-cli用の設定ディレクトリを先に作成
 RUN mkdir -p /home/vscode/.config/atcoder-cli-nodejs
+RUN mkdir -p /home/vscode/.config/atcoder-cli-nodejs/python
 
-# Mac側(ホスト)のrestore_filesフォルダから設定をコピーし、
-# 所有者をvscodeユーザーに設定する
-COPY --chown=vscode:vscode ./template/template.json /home/vscode/.config/atcoder-cli-nodejs/template.json
-COPY --chown=vscode:vscode ./template/main.py /home/vscode/.config/atcoder-cli-nodejs/main.py
+# テンプレートをpythonフォルダ下に設定する
+COPY --chown=vscode:vscode ./template/template.json /home/vscode/.config/atcoder-cli-nodejs/python/template.json
+COPY --chown=vscode:vscode ./template/main.py /home/vscode/.config/atcoder-cli-nodejs/python/main.py
 
 # ホームディレクトリ全体の所有者をvscodeユーザーに変更する
 RUN chown -R vscode:vscode /home/vscode
