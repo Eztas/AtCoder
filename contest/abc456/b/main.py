@@ -13,4 +13,4 @@ count456 += A1.count(5)*A2.count(6)*A3.count(4)
 count456 += A1.count(6)*A2.count(5)*A3.count(4)
 count456 += A1.count(6)*A2.count(4)*A3.count(5)
 
-print(count456/256)
+print(count456/216)
