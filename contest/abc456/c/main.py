@@ -1,12 +1,22 @@
-import collections
-import heapq
-# set(L), L.count(l), heapq.heapify(L)
+import math
+S = input()
 
-s = input()
-s_list = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
-S = input().split() # 入力例: ". # ." -> ['.', '#', '.']
-T = [list(input()) for _ in range(H)]
+# 1文字目から数えて、重複が生まれるまでの個数
+# 3×10^5×3×10^5の計算
+# 重複インデックスの計算か？
+# 隣り合う文字が重複している時のインデックス(1,2 で隣り合う時の1)
+count = 0
+neighbor_index = [0]
+len_S = len(S)
+prevS = S[0]
+# そのインデックス,abcc
+# a, b, c, ab, bc, abc
+# abccbaa
+# 0, 2, 5
+for idx, s in enumerate(S):
+    neighbor_index.append(idx)
 
-M = int(input())
-A = list(map(int,input().split())) # 配列で返す
-N, Q = map(int,input().split()) # それぞれの変数に数値を渡す
+for idx in range(1, len(neighbor_index)):
+    count += math.factorial(neighbor_index[idx]-neighbor_index[idx-1])
+
+print(count%998244353)
