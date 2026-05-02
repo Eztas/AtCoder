@@ -1,12 +1,16 @@
-import collections
-import heapq
-# set(L), L.count(l), heapq.heapify(L)
+A1 = list(map(int,input().split())) # 配列で返す
+A2 = list(map(int,input().split())) # 配列で返す
+A3 = list(map(int,input().split())) # 配列で返す
 
-s = input()
-s_list = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
-S = input().split() # 入力例: ". # ." -> ['.', '#', '.']
-T = [list(input()) for _ in range(H)]
+# 4, 5, 6
 
-M = int(input())
-A = list(map(int,input().split())) # 配列で返す
-N, Q = map(int,input().split()) # それぞれの変数に数値を渡す
+count456 = 0
+
+count456 += A1.count(4)*A2.count(5)*A3.count(6)
+count456 += A1.count(4)*A2.count(6)*A3.count(5)
+count456 += A1.count(5)*A2.count(4)*A3.count(6)
+count456 += A1.count(5)*A2.count(6)*A3.count(4)
+count456 += A1.count(6)*A2.count(5)*A3.count(4)
+count456 += A1.count(6)*A2.count(4)*A3.count(5)
+
+print(count456/256)
