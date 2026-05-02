@@ -19,7 +19,6 @@ def calc(num):
 count = 0
 sublists = []
 len_S = len(S)
-prevS = S[0]
 # そのインデックス,abcc
 # a, b, c, ab, bc, abc
 # abca
@@ -34,6 +33,8 @@ for idx in range(0, len_S-1):
 
 if head != len_S-1:
     sublists.append(len_S-1-head+1)
+else:
+    sublists.append(1) ## 同じということは、bbのbまでみたが、末尾のbの対応だけない
 
 for sublist in sublists:
     count += calc(sublist)
