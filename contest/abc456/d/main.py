@@ -13,28 +13,16 @@
 # そうか、部分列で抽出した後も隣り合っていないことが重要
 # abaとかで、bを撮ったらくっつくはだめ
 # 2文字を1文字に
+
+# 答え曰くそもそもこれは動的計画法の問題として変換可能
+# dp['a']: 最後が 'a' で終わる有効な部分列の数
+# dp['b']: 最後が 'b' で終わる有効な部分列の数
+# dp['c']: 最後が 'c' で終わる有効な部分列の数
+# 末尾ベースにして上書きすることで、過去への遡りを防ぐ
+# 連続していると、2足すだけ(abb, の場合a, cが更新されないままbが増えた事実だけの加算が可能)
+from collections import defaultdict
 S = input()
-count = 0
-sublists = []
-len_S = len(S)
-
-def calc(num):
-    data = 0
-    for i in range(num):
-       data += (i+1)
-
-    return data 
-
-for idx in range(0, len_S-1):
-    if S[idx+1] == S[idx]:
-        sublists.append(idx)
-
-# idxループ回して、idxスタートから見た時
-# sublistsのcalcの数だけ増減した配列が生まれる
-# 増減した配列での理論値を常に足していく
-
-for sublist in sublists:
-    count += (2**(len_S-sublist) - 1)
-    count = count % 998244353
-
-print(count)
+dp = defaultdict(int) # defaultdict を使うと、存在しないキーにアクセスした瞬間に、指定した型の初期値（デフォルト値, intなら0）を勝手に作成
+for c in S:
+  dp[c] = (dp['a'] + dp['b'] + dp['c'] + 1) % 998244353
+print(sum(dp.values()) % 998244353) # バリューには個数が入る
