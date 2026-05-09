@@ -65,6 +65,14 @@ $i$ 文字目までの部分列の総数を知りたいとき。実は「$(i-1)$
 
 [結果1](./../contest/abc430/b/main.py)
 
+# 最小値の最大化（または最大値の最小化）
+
+単調性があれば、二分探索で判定しながら、ある値以上になるのかどうかを判定する
+
+[例1](https://atcoder.jp/contests/abc457/tasks/abc457_d)
+
+[結果1](./../contest/abc457/d/main.py)
+
 # いずれ解けそう(何となくはわかるが、今はまだ言語化できない)
 
 [abc411-D-Conflict2](https://atcoder.jp/contests/abc411/tasks/abc411_d)

@@ -27,10 +27,29 @@ A = list(map(int,input().split()))
 # メタ思考だけど、N*Nで超過するということは動的計画法ではなさそう
 # heapqで、K回計算しながら配列の新陳代謝も思ったが、Kが超過
 
-A_sorted = sorted(A)
+#「解が単調」である問題では、しばしば 解の二分探索 が有用です。 
+#ans を直接求めるのではなく、「 ans を X 以上にすることが可能ですか？」という質問で解を二分探索することで、解を特定するというテクニックです。
+# これは多くの問題において、いわゆる「 ans を X 以上にすることが可能ですか？」などの 判定問題 のほうが解くほうが（直接元の問題を解くより）簡単であることが多いことを利用しています。
 
-for idx, a in enumerate(A_sorted):
-    if idx < N - 1:
+# 回数をチェック
+def check_freq(m):
+    freq = 0
+    for idx, a in enumerate(A):
+        if a < m:
+            # +idxを足して天井関数化, +idx+1以上はたしていないので、商は買えないまま切り上げ
+            freq += (m - a + idx) // (idx+1) # 目的の値までの回数
+            if freq > K:
+                return False # K回を超過したらもう有り得ない
+    return True
 
+ok = 1
+ng = A[0] + K + 1 # Kが基本大きいので、これを超えることはない
 
-print(min(A_sorted))
+while ng - ok > 1:
+    med = (ok + ng) // 2 # 二分探索で, 下目か上目で方向性を探る
+    if check_freq(med):
+        ok = med
+    else:
+        ng = med
+
+print(ok)
