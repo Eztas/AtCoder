@@ -24,12 +24,14 @@ idx = 0
 offset = 0
 for i, c in enumerate(C):
     if k > c * len(A[i]):
-        k = k - c
+        k = k - c * len(A[i])
+        #print('1:k=',k)
     else:
+        #print('2:k=',k)
         idx = i
         offset = k % len(A[i])
-        if k == 0:
+        if offset == 0:
             print(A[i][len(A[i])-1])
         else:
-            print(A[i][k-1])
+            print(A[i][offset-1])
         break
