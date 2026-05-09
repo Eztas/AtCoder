@@ -1,12 +1,9 @@
-import collections
-import heapq
-# set(L), L.count(l), heapq.heapify(L)
+N = int(input())
+A = []
+for n in range(N):
+    a = list(map(int,input().split()))
+    A.append(a[1:])
 
-s = input()
-s_list = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
-S = input().split() # 入力例: ". # ." -> ['.', '#', '.']
-T = [list(input()) for _ in range(H)]
+X, Y = map(int,input().split())
 
-M = int(input())
-A = list(map(int,input().split())) # 配列で返す
-N, Q = map(int,input().split()) # それぞれの変数に数値を渡す
+print(A[X-1][Y-1])
