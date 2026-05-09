@@ -2,11 +2,34 @@ import collections
 import heapq
 # set(L), L.count(l), heapq.heapify(L)
 
-s = input()
-s_list = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
-S = input().split() # 入力例: ". # ." -> ['.', '#', '.']
-T = [list(input()) for _ in range(H)]
+N, K = map(int,input().split())
+A = []
+for n in range(N):
+    a = list(map(int,input().split()))
+    A.append(a[1:]) # 初項のLを除く
 
-M = int(input())
-A = list(map(int,input().split())) # 配列で返す
-N, Q = map(int,input().split()) # それぞれの変数に数値を渡す
+C = list(map(int,input().split()))
+
+B = 0
+
+# A[n]をC[n]回列に加える
+# KがC[n]のうちどれなのかを知る必要がある
+
+# idxとoffsetさえ求めたらOK
+# ちょい複雑
+# c * len(A[i]) >= k
+# 2 * 3, 4
+k = K
+idx = 0
+offset = 0
+for i, c in enumerate(C):
+    if k > c * len(A[i]):
+        k = k - c
+    else:
+        idx = i
+        offset = k % len(A[i])
+        if k == 0:
+            print(A[i][len(A[i])-1])
+        else:
+            print(A[i][k-1])
+        break
