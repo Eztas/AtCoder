@@ -1,7 +1,5 @@
 import collections
 import heapq
-from bisect import bisect_right, bisect_left # x以下の最小値のidx, x以上の最大値のidxを返す
-from collections import defaultdict # setっぽく使える
 # set(L), L.count(l), heapq.heapify(L)
 
 s = input()
