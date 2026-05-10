@@ -73,6 +73,10 @@ $i$ 文字目までの部分列の総数を知りたいとき。実は「$(i-1)$
 
 [結果1](./../contest/abc457/d/main.py)
 
+`bisect_left(num, x): 「x以上の最小の値の位置」を知りたい`
+
+`bisect_right(num, x): 「x以下の最大の値の位置」を知りたい`
+
 # いずれ解けそう(何となくはわかるが、今はまだ言語化できない)
 
 [abc411-D-Conflict2](https://atcoder.jp/contests/abc411/tasks/abc411_d)
@@ -84,6 +88,8 @@ $i$ 文字目までの部分列の総数を知りたいとき。実は「$(i-1)$
 [abc425-C-Rotate and Sum Query](https://atcoder.jp/contests/abc425/tasks/abc425_c)
 
 [abc455-D-Card Pile Query](https://atcoder.jp/contests/abc455/tasks/abc455_d)
+
+[abc457-E-Crossing Table Cloth](https://atcoder.jp/contests/abc457/tasks/abc457_e)
 
 # 個人的悔しい
 

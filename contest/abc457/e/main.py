@@ -12,7 +12,8 @@ for m in range(M):
     R.append(r)
 
 # 各2枚の組み合わせが示す布パターンをやるか？
-# 
+# setでやれば計算量も減らせる
+# ただbinary_leftとrightとかいう初見
 
 Q = int(input())
 
