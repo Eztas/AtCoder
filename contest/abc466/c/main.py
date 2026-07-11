@@ -10,16 +10,25 @@ N = int(input())
 # 点1, 2, …, N が この順に 左から右に並んでるらしい
 # 点1, 2と点2, 3が共にYesの場合、1と3がYesかは確定しない、少数もあるから
 # 1, 2 , 3, 4OK, 1-5でダメになる
+# 1から4まで全てOKするのが確定, 次の2とかは2, 5のパターンを調べればいい
 countIJ = 0
+ikeru_kazu = 1
+hasNo = False
 for i in range(1, N):
-    for j in range(i+1, N+1):
+    for j in range(ikeru_kazu+1, N+1):
         print("? "+str(i)+" "+str(j), flush=True) # キャストしてもRE
 
         S = input()
         if S == "Yes":
-            countIJ += 1
+            ikeru_kazu += 1
         else:
+            countIJ += (ikeru_kazu - 1) * ikeru_kazu // 2
+            hasNo = True
             break # これ以上はNo, continueやと結局計算してるわ、2N超過でREかな？
 
-print("! "+str(countIJ), flush=True)
+if hasNo:
+    print("! "+str(countIJ), flush=True)
+else:
+    countIJ = N * (N-1) // 2
+    print("! "+str(countIJ), flush=True)
 
