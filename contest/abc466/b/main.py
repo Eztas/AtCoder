@@ -1,14 +1,18 @@
-import collections
-import heapq
-from bisect import bisect_right, bisect_left # x以下の最小値のidx, x以上の最大値のidxを返す
-from collections import defaultdict # setっぽく使える
-# set(L), L.count(l), heapq.heapify(L)
+def print_horizontal_line(dataList, endChar):
+    for idx, data in enumerate(dataList):
+        if idx < len(dataList) - 1:
+            print(data,end=endChar)
+        else:
+            print(data)
 
-s = input()
-s_list = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
-S = input().split() # 入力例: ". # ." -> ['.', '#', '.']
-T = [list(input()) for _ in range(H)]
+N, M = map(int,input().split()) # それぞれの変数に数値を渡す
 
-M = int(input())
-A = list(map(int,input().split())) # 配列で返す
-N, Q = map(int,input().split()) # それぞれの変数に数値を渡す
+C = []
+S = []
+K = [-1] * M
+for n in range(N):
+    c, s = map(int,input().split()) # それぞれの変数に数値を渡す
+    if K[c-1] < s:
+        K[c-1] = s
+
+print_horizontal_line(K, ' ')
