@@ -21,6 +21,7 @@ for i in range(1, N):
         S = input()
         if S == "Yes":
             ikeru_kazu += 1
+            hasNo = False
         else:
             countIJ += (ikeru_kazu - 1) * ikeru_kazu // 2
             hasNo = True
@@ -29,6 +30,6 @@ for i in range(1, N):
 if hasNo:
     print("! "+str(countIJ), flush=True)
 else:
-    countIJ = N * (N-1) // 2
+    countIJ += (ikeru_kazu - 1) * ikeru_kazu // 2
     print("! "+str(countIJ), flush=True)
 
