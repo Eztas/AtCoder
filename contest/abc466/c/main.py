@@ -21,15 +21,8 @@ for i in range(1, N):
         S = input()
         if S == "Yes":
             ikeru_kazu += 1
-            hasNo = False
         else:
-            countIJ += (ikeru_kazu - 1) * ikeru_kazu // 2
-            hasNo = True
             break # これ以上はNo, continueやと結局計算してるわ、2N超過でREかな？
-
-if hasNo:
-    print("! "+str(countIJ), flush=True)
-else:
     countIJ += (ikeru_kazu - 1) * ikeru_kazu // 2
-    print("! "+str(countIJ), flush=True)
 
+print("! "+str(countIJ), flush=True)
