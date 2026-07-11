@@ -1,5 +1,5 @@
 N = int(input())
-
+# https://qiita.com/y-tsutsu/items/aa7e8e809d6ac167d6a1
 # print("出力内容", flush=True)
 # 点の総当たり, 3なら3, 4なら4*3/2=6
 # N*(N-1)/2 < 2N
@@ -20,5 +20,5 @@ for i in range(1, N):
         else:
             continue # これ以上はNo
 
-print("! "+countIJ)
+print("! "+str(countIJ), flush=True)
 
