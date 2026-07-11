@@ -8,14 +8,14 @@ N = int(input())
 # 1, 2, 3は聞けない
 # 差分だけ聞いて当てないといけない
 # 点1, 2, …, N が この順に 左から右に並んでるらしい
+# 点1, 2と点2, 3が共にYesの場合、1と3がYesかは確定しない、少数もあるから
 countIJ = 0
 for j in range(N):
-    for i in range(j):
-        print("? "+i+" "+j, flush=True)
+    print("? "+j+" "+(j+1), flush=True)
 
     S = input().split()
     if S == "Yes":
         countIJ += 1
 
-print("? "+countIJ)
+print("! "+countIJ)
 
