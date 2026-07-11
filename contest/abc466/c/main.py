@@ -23,6 +23,6 @@ for i in range(1, N):
             ikeru_kazu += 1
         else:
             break # これ以上はNo, continueやと結局計算してるわ、2N超過でREかな？
-    countIJ += (ikeru_kazu - 1) * ikeru_kazu // 2
+    countIJ += ikeru_kazu - i
 
 print("! "+str(countIJ), flush=True)
