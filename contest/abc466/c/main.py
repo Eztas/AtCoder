@@ -10,12 +10,15 @@ N = int(input())
 # 点1, 2, …, N が この順に 左から右に並んでるらしい
 # 点1, 2と点2, 3が共にYesの場合、1と3がYesかは確定しない、少数もあるから
 countIJ = 0
-for j in range(N):
-    print("? "+j+" "+(j+1), flush=True)
+for i in range(1, N):
+    for j in range(i+1, N+1):
+        print("? "+str(i)+" "+str(j), flush=True) # キャストしてもRE
 
-    S = input().split()
-    if S == "Yes":
-        countIJ += 1
+        S = input()
+        if S == "Yes":
+            countIJ += 1
+        else:
+            continue # これ以上はNo
 
 print("! "+countIJ)
 
