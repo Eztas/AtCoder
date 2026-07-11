@@ -11,10 +11,13 @@ N = int(input())
 # 点1, 2と点2, 3が共にYesの場合、1と3がYesかは確定しない、少数もあるから
 # 1, 2 , 3, 4OK, 1-5でダメになる
 # 1から4まで全てOKするのが確定, 次の2とかは2, 5のパターンを調べればいい
+# 2Nをどうやったらこえる
 countIJ = 0
 ikeru_kazu = 1
-hasNo = False
+
 for i in range(1, N):
+    if i > ikeru_kazu:
+        ikeru_kazu = i
     for j in range(ikeru_kazu+1, N+1):
         print("? "+str(i)+" "+str(j), flush=True) # キャストしてもRE
 
