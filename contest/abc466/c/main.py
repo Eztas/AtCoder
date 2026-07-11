@@ -9,6 +9,7 @@ N = int(input())
 # 差分だけ聞いて当てないといけない
 # 点1, 2, …, N が この順に 左から右に並んでるらしい
 # 点1, 2と点2, 3が共にYesの場合、1と3がYesかは確定しない、少数もあるから
+# 1, 2 , 3, 4OK, 1-5でダメになる
 countIJ = 0
 for i in range(1, N):
     for j in range(i+1, N+1):
@@ -18,7 +19,7 @@ for i in range(1, N):
         if S == "Yes":
             countIJ += 1
         else:
-            continue # これ以上はNo
+            break # これ以上はNo, continueやと結局計算してるわ、2N超過でREかな？
 
 print("! "+str(countIJ), flush=True)
 
