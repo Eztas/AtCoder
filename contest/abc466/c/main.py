@@ -1,14 +1,21 @@
-import collections
-import heapq
-from bisect import bisect_right, bisect_left # x以下の最小値のidx, x以上の最大値のidxを返す
-from collections import defaultdict # setっぽく使える
-# set(L), L.count(l), heapq.heapify(L)
+N = int(input())
 
-s = input()
-s_list = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
-S = input().split() # 入力例: ". # ." -> ['.', '#', '.']
-T = [list(input()) for _ in range(H)]
+# print("出力内容", flush=True)
+# 点の総当たり, 3なら3, 4なら4*3/2=6
+# N*(N-1)/2 < 2N
+# N^2-N < 4N, N^2<5N
+# 2Nで済ませる方法なくない
+# 1, 2, 3は聞けない
+# 差分だけ聞いて当てないといけない
+# 点1, 2, …, N が この順に 左から右に並んでるらしい
+countIJ = 0
+for j in range(N):
+    for i in range(j):
+        print("? "+i+" "+j, flush=True)
 
-M = int(input())
-A = list(map(int,input().split())) # 配列で返す
-N, Q = map(int,input().split()) # それぞれの変数に数値を渡す
+    S = input().split()
+    if S == "Yes":
+        countIJ += 1
+
+print("? "+countIJ)
+
