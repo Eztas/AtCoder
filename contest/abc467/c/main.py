@@ -1,9 +1,3 @@
-import collections
-import heapq
-from bisect import bisect_right, bisect_left # x以下の最小値のidx, x以上の最大値のidxを返す
-from collections import defaultdict # setっぽく使える
-# set(L), L.count(l), heapq.heapify(L)
-
 N, M = map(int,input().split()) # Mは2固定
 A = list(map(int,input().split())) # 配列で返す
 B = list(map(int,input().split())) # 配列で返す
@@ -15,11 +9,15 @@ for i in range(N-1):
 
 count = 0
 for i in range(N-1):
-    if AA[i] % 2 == B[i]:
+    if AA[i] % M == B[i]:
         continue
     if i == N-2:
-        if AA[i] % 2 != B[i]:
-            count += 1
+        count += 1
+    elif i == 0:
+        AA[i] += 1
+        count += 1
+        if AA[i+1] % M != B[i+1]:
+            AA[i+1] += 1
     else:
         AA[i] += 1
         AA[i+1] += 1
