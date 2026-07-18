@@ -1,14 +1,20 @@
-import collections
-import heapq
-from bisect import bisect_right, bisect_left # x以下の最小値のidx, x以上の最大値のidxを返す
-from collections import defaultdict # setっぽく使える
-# set(L), L.count(l), heapq.heapify(L)
+T = int(input())
 
-s = input()
-s_list = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
-S = input().split() # 入力例: ". # ." -> ['.', '#', '.']
-T = [list(input()) for _ in range(H)]
+for t in range(T):
+    PX, PY, QX, QY, RX, RY, SX, SY = map(int,input().split()) # それぞれの変数に数値を渡す
+    # C1, C2の中心は同じだが、どこでもいい
+    # RとSの直交の直線とPとQの直交直線の式では
+    # 
+    anti_C_1_slope = (QY - PY) / (QX - PX)
+    anti_C_2_slope = (SY - RY) / (SX - RX)
+    C_1_slope = (-1) / anti_C_1_slope
+    C_2_slope = (-1) / anti_C_2_slope
 
-M = int(input())
-A = list(map(int,input().split())) # 配列で返す
-N, Q = map(int,input().split()) # それぞれの変数に数値を渡す
+    # y = cs*X + a
+    C_1_seppen = (QY - PY) / 2 + (C_1_slope*((QX - PX) / 2))
+    C_2_seppen = (SY - RY) / 2 + (C_2_slope*((SX - RX) / 2))
+
+    if C_1_slope == C_2_slope:
+        print("No")
+    else:
+        print("Yes")
