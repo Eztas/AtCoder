@@ -1,6 +1,6 @@
 T = int(input())
 
-# 方程式を使うと遅いかつ外部ライブラリが必須だから、ベクトルがいいらしい
+# 方程式を使うと遅い、0除算の例外処理が面倒、かつ外部ライブラリが必須だから、ベクトルがいいらしい
 # 空間ベクトル a, b の外積（Cross Product）に関する仕様
 # - 大きさ: |a||b|sinθ （a と b が成す平行四辺形の面積に等しい）
 # - 向き: ベクトル a, b の両方に垂直な方向
@@ -12,11 +12,19 @@ for t in range(T):
 
     vecPQ = [QX - PX, QY - PY]
     vecRS = [SX - RX, SY - RY]
-    # Y1/X1 = Y2/X2の考えを応用
 
+    # Y1/X1 = Y2/X2の考えを応用
     # 並行
     if vecPQ[1] * vecRS[0] - vecPQ[0] * vecRS[1] == 0:
-        print("No")
+        # 中点同士のベクトルが直交 = 同じ線だから並行でも重なってる
+        vecMiddleX = (SX - RX) / 2- (QX - PX) / 2
+        vecMiddleY = (SY - RY) / 2- (QY - PY) / 2
+        vecMiddle = [vecMiddleX, vecMiddleY]
+        
+        if vecMiddle[0] * vecPQ[0] + vecMiddle[1] * vecPQ[1] == 0:
+            print("Yes")
+        else:
+            print("No")
     else: # 並行でない = 交わる = 中心は存在
         print("Yes")
     
