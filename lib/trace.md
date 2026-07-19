@@ -96,3 +96,5 @@ $i$ 文字目までの部分列の総数を知りたいとき。実は「$(i-1)$
 [abc423-C-Lock All Doors](https://atcoder.jp/contests/abc423/tasks/abc423_c)
 
 [abc430-B-Count Subgrid](https://atcoder.jp/contests/abc430/tasks/abc430_b)
+
+[abc467-C-Adjacent Sums (easy)](https://atcoder.jp/contests/abc467/tasks/abc467_c)
