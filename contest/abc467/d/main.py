@@ -17,8 +17,8 @@ for t in range(T):
     # 並行
     if vecPQ[1] * vecRS[0] - vecPQ[0] * vecRS[1] == 0:
         # 中点同士のベクトルが直交 = 同じ線だから並行でも重なってる
-        vecMiddleX = (SX - RX) / 2- (QX - PX) / 2
-        vecMiddleY = (SY - RY) / 2- (QY - PY) / 2
+        vecMiddleX = (SX + RX) / 2- (QX + PX) / 2
+        vecMiddleY = (SY + RY) / 2- (QY + PY) / 2
         vecMiddle = [vecMiddleX, vecMiddleY]
         
         if vecMiddle[0] * vecPQ[0] + vecMiddle[1] * vecPQ[1] == 0:
