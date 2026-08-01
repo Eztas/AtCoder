@@ -17,10 +17,14 @@ S = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
 # 行数はNだけ
 # 行数優先でループか、計算優先でループか
 # マックスに達したらもう終わりなんだよな
+
+# まず
 count = 0
 atari = 0
-idx = 0
+
 for k in range(N): # ほぼ10^5の計算量
+    count += 1
+    idx = 0
     if count == N:
         print(N)
         continue
@@ -29,9 +33,14 @@ for k in range(N): # ほぼ10^5の計算量
         atari += 1
     while atari > 0:
         count += 1
-        if S[k+count] == 'o':
+        idx += 1
+        if k+idx >= N-1:
+            break
+        if S[k+idx] == 'o':
             atari += 1
         atari -= 1
 
-    print(count)
-    
+    if k+idx == N:
+        print(N)
+    else:
+        print(count)
