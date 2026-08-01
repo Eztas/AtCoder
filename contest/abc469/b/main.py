@@ -1,14 +1,18 @@
-import collections
-import heapq
-from bisect import bisect_right, bisect_left # x以下の最小値のidx, x以上の最大値のidxを返す
-from collections import defaultdict # setっぽく使える
-# set(L), L.count(l), heapq.heapify(L)
-
-s = input()
-s_list = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
+N = int(input())
 S = input().split() # 入力例: ". # ." -> ['.', '#', '.']
-T = [list(input()) for _ in range(H)]
 
-M = int(input())
-A = list(map(int,input().split())) # 配列で返す
-N, Q = map(int,input().split()) # それぞれの変数に数値を渡す
+# o=人がいる, x=人いない
+# 椅子がない = 左端
+S_edge = ['x'] + S + ['x']
+print(S_edge)
+count = 0
+
+for n in range(N+2):
+    if n == 0 or n == N+1:
+        continue
+    else:
+        print('n='+str(n))
+        if S_edge[n-1] == 'x' and S_edge[n] == 'x' and S_edge[n+1] == 'x':
+            count += 1
+
+print(count)
