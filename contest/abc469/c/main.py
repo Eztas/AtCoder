@@ -10,6 +10,8 @@ S = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
 # oxoみたいな挟み撃ちの場合、
 # oの数×2だけ増やす
 
+# oxxox
+# 2, 3, 5, 5, 5
 # 全部× = 1ずつ増えていくだけ
 # oがある = 1個増える
 
@@ -31,6 +33,17 @@ for k in range(N):
     o_counts_list.append(o_counts)
 
 print(o_counts_list)
+
+atari_list = [n+1 for n in range(N)]
+deep_list = []
+# 2,があると、次の2まで見にいくという流れ
+# 個数そのものとインデックス変化自体が存在する
+# どの層まで見にいくかを考える
+
+
+idx = 0
+while idx < N:
+
 
 for k in range(N): # ほぼ10^5の計算量
     count += 1
