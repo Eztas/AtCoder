@@ -1,15 +1,6 @@
 N = int(input())
 S = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
 
-# o=当たり、x=ハズレ
-# 先頭からk個受け取り、
-
-# k=1の時には最大何個、k=2の時には最大何個、を求める
-# まず、kだけ食べる, k+1以降の数だけ食べる
-# 単調増加
-# oxoみたいな挟み撃ちの場合、
-# oの数×2だけ増やす
-
 # oxxox
 # 2, 3, 5, 5, 5
 # 全部× = 1ずつ増えていくだけ
@@ -20,50 +11,24 @@ S = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
 # 行数優先でループか、計算優先でループか
 # マックスに達したらもう終わりなんだよな
 
-# まず
+# xの位置で考えてみたらいいらしい（回答）
+# o = 加速度的に2倍以上に
+# xなら制御できる
+# k個目のxが出るまでと同じ
+# ただどうやったら見つけられたのだろう
+
 count = 0
-atari = 0
-
-o_counts_list = []
-o_counts = 0
-
-for k in range(N):
-    if S[k] == 'o':
-        o_counts += 1
-    o_counts_list.append(o_counts)
-
-print(o_counts_list)
-
-atari_list = [n+1 for n in range(N)]
-deep_list = []
-# 2,があると、次の2まで見にいくという流れ
-# 個数そのものとインデックス変化自体が存在する
-# どの層まで見にいくかを考える
-
-
-idx = 0
-while idx < N:
-
 
 for k in range(N): # ほぼ10^5の計算量
-    count += 1
-    idx = 0
+    count = 0
     if count == N:
         print(N)
         continue
 
-    if S[k] == 'o':
-        atari += 1
-    while atari > 0:
-        count += 1
-        idx += 1
-        if k+idx >= N-1:
+    for s in S:
+        if s == 'x':
+            count += 1
+        if count >= k:
             break
-        if S[k+idx] == 'o':
-            atari += 1
-        atari -= 1
 
-    if k+idx == N:
-        print(N)
-    else:
-        print(count)
+    print(count)
