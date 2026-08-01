@@ -8,7 +8,7 @@ S = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
 # まず、kだけ食べる, k+1以降の数だけ食べる
 # 単調増加
 # oxoみたいな挟み撃ちの場合、
-# xo
+# oの数×2だけ増やす
 
 # 全部× = 1ずつ増えていくだけ
 # oがある = 1個増える
@@ -21,6 +21,16 @@ S = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
 # まず
 count = 0
 atari = 0
+
+o_counts_list = []
+o_counts = 0
+
+for k in range(N):
+    if S[k] == 'o':
+        o_counts += 1
+    o_counts_list.append(o_counts)
+
+print(o_counts_list)
 
 for k in range(N): # ほぼ10^5の計算量
     count += 1
