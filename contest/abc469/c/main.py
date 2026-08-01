@@ -20,15 +20,17 @@ S = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
 count = 0
 
 for k in range(N): # ほぼ10^5の計算量
-    count = 0
+    cross_count = 0
+    count += 1
     if count == N:
         print(N)
         continue
 
     for s in S:
+        count += 1
         if s == 'x':
-            count += 1
-        if count >= k:
+            cross_count += 1
+        if cross_count >= k or count >= N:
             break
 
     print(count)
