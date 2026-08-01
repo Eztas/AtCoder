@@ -1,14 +1,10 @@
-import collections
-import heapq
-from bisect import bisect_right, bisect_left # x以下の最小値のidx, x以上の最大値のidxを返す
-from collections import defaultdict # setっぽく使える
-# set(L), L.count(l), heapq.heapify(L)
+N = int(input())
+S = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
 
-s = input()
-s_list = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
-S = input().split() # 入力例: ". # ." -> ['.', '#', '.']
-T = [list(input()) for _ in range(H)]
+# o=当たり、x=ハズレ
+# 先頭からk個受け取り、
 
-M = int(input())
-A = list(map(int,input().split())) # 配列で返す
-N, Q = map(int,input().split()) # それぞれの変数に数値を渡す
+# k=1の時には最大何個、k=2の時には最大何個、を求める
+# まず、kだけ食べる, k+1以降の数だけ食べる
+# 
+for k in range(N): # ほぼ10^5の計算量
