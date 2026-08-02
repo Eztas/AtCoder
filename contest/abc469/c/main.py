@@ -17,28 +17,17 @@ S = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
 # k個目のxが出るまでと同じ
 # ただどうやったら見つけられたのだろう
 # あらかじめメモしておけばいい、ループ分割の考え
+# ループでN個分愚直に繋がなくていい、そもそもそれをオーバーしたら脳死N投入でいいんだから
 
 count = 0
-cross_list = [0] * N
-cross_count = 0
+cross_pos = []
 for n in range(N): # ほぼ10^5の計算量
     if S[n] == 'x':
-        cross_count += 1
-    cross_list[n] = cross_count
+        cross_pos.append(n)
 
 
 for k in range(N): # ほぼ10^5の計算量
-    cross_count = 0
-    count += 1
-    if count == N:
+    if k >= len(cross_pos):
         print(N)
-        continue
-
-    for s in S:
-        count += 1
-        if s == 'x':
-            cross_count += 1
-        if cross_count >= k or count >= N:
-            break
-
-    print(count)
+    else:
+        print(cross_pos[k]+1)
