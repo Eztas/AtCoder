@@ -16,8 +16,16 @@ S = list(input()) # 入力例: "abcde" -> ['a', 'b', 'c', 'd', 'e']
 # xなら制御できる
 # k個目のxが出るまでと同じ
 # ただどうやったら見つけられたのだろう
+# あらかじめメモしておけばいい、ループ分割の考え
 
 count = 0
+cross_list = [0] * N
+cross_count = 0
+for n in range(N): # ほぼ10^5の計算量
+    if S[n] == 'x':
+        cross_count += 1
+    cross_list[n] = cross_count
+
 
 for k in range(N): # ほぼ10^5の計算量
     cross_count = 0
